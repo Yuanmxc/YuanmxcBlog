@@ -1,0 +1,311 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>陌上尘归处</title><meta name="author" content="Yuanmxc"><meta name="copyright" content="Yuanmxc"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="陌上尘归处">
+<meta property="og:url" content="http://example.com/page/2/index.html">
+<meta property="og:site_name" content="陌上尘归处">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/other/touxiang2.png">
+<meta property="article:author" content="Yuanmxc">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/other/touxiang2.png"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/other/touxiang2.png"><link rel="canonical" href="http://example.com/page/2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+          
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'FancyBox',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '陌上尘归处',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load', preloader.endLoading)
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="web_bg" style="background-image: url(https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p2.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/other/touxiang2.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p2.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/other/touxiang2.png" alt="Logo"><span class="site-name">陌上尘归处</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">陌上尘归处</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/Yuanmxc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="post_cover left"><a href="/2024/02/04/C++%20%E6%9D%82%E8%AE%B0/" title="C++ 杂记"><img class="post-bg" src="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p8.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C++ 杂记"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/02/04/C++%20%E6%9D%82%E8%AE%B0/" title="C++ 杂记">C++ 杂记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-02-04T08:26:51.000Z" title="发表于 2024-02-04 16:26:51">2024-02-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BE%85%E5%88%86%E7%B1%BB/">待分类</a></span></div><div class="content">C++ 杂记代码记录随机 ID 生成函数根据高分辨率的时钟为种子，生成指定长度的随机 ID 的函数 123456789101112// 生成指定长度的随机 IDstd::string randomId(size_t length) &#123;  using std::chrono::high_resolution_clock;  static thread_local std::mt19937 rng(    static_cast&lt;unsigned int&gt;(high_resolution_clock::now().time_since_epoch().count()));  static const std::string characters(    &quot;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;);  std::string id(length, &#x27;0&#x27;); ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/12/13/C++%20%E6%9D%A1%E4%BB%B6%E5%8F%98%E9%87%8F/" title="C++ 条件变量"><img class="post-bg" src="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p43.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C++ 条件变量"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/12/13/C++%20%E6%9D%A1%E4%BB%B6%E5%8F%98%E9%87%8F/" title="C++ 条件变量">C++ 条件变量</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-12-13T09:46:26.000Z" title="发表于 2023-12-13 17:46:26">2023-12-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BE%85%E5%88%86%E7%B1%BB/">待分类</a></span></div><div class="content">C++ 条件变量互斥锁和条件变量在多线程编程中，同步机制是保证程序正确性的关键。互斥锁（mutex）作为最基础的同步原语，能够有效保护临界区资源。但当遇到线程间协作的场景时，仅靠互斥锁就显得力不从心。 典型场景对比：  互斥锁适用场景：多线程修改共享资源（如线程安全的哈希表） 条件变量适用场景：线程依赖其他线程产生的数据（如生产者-消费者模型）  传统轮询方案（伪代码）： 12345678910while(true) &#123;    lock(mutex);    if(condition) &#123;        // 处理业务        unlock(mutex);        break;    &#125;    unlock(mutex);    sleep(100); //...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/08/28/Arch%20Linux%20%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%20MySQL%EF%BC%88MariaDB%EF%BC%89/" title="Arch Linux 安装和使用 MySQL（MariaDB）"><img class="post-bg" src="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p34.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Arch Linux 安装和使用 MySQL（MariaDB）"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/08/28/Arch%20Linux%20%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%20MySQL%EF%BC%88MariaDB%EF%BC%89/" title="Arch Linux 安装和使用 MySQL（MariaDB）">Arch Linux 安装和使用 MySQL（MariaDB）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-08-28T01:28:57.000Z" title="发表于 2023-08-28 09:28:57">2023-08-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BE%85%E5%88%86%E7%B1%BB/">待分类</a></span></div><div class="content">好的！以下是扩展后的博客内容，新增了安全加固、常用命令、备份恢复、远程访问配置等内容，保持了原有的技术文档风格：  Arch Linux 安装和使用 MySQL（MariaDB）安装 MariaDB 和客户端工具1sudo pacman -S mariadb mariadb-clients  初始化数据目录12sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql# 输出提示包含初始化完成信息  启动与开机自启123sudo systemctl start mysqld          # 启动服务sudo systemctl enable mysqld         # 设置开机自启动（可以不设置）sudo systemctl status mysqld         # 查看服务状态（注意服务名是mysqld）  安全加固12sudo mysql_secure_installation#...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/06/04/Windows%20%E5%92%8C%20Linux%20%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%92%8C%E7%AE%A1%E7%90%86/" title="Windows 和 Linux文件传输和管理"><img class="post-bg" src="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p15.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Windows 和 Linux文件传输和管理"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/06/04/Windows%20%E5%92%8C%20Linux%20%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%92%8C%E7%AE%A1%E7%90%86/" title="Windows 和 Linux文件传输和管理">Windows 和 Linux文件传输和管理</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-06-04T11:16:26.000Z" title="发表于 2023-06-04 19:16:26">2023-06-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BE%85%E5%88%86%E7%B1%BB/">待分类</a></span></div><div class="content">Windows 和 Linux文件传输和管理局域网共享方案Samba 文件共享（全协议兼容）适用场景：需要 Windows 原生支持且长期稳定的共享目录优势：读写性能好，支持权限管理劣势：需配置服务端 配置流程（以 Arch Linux 为例） 安装必要组件： 1sudo pacman -S samba  创建共享目录并配置权限： 12mkdir -p ~/public_fileschmod 1777 ~/public_files  # 粘滞位防误删  修改 /etc/samba/smb.conf： 123456[Public]path = /home/yourname/public_filesvalid users = yournameread only = Nocreate mask = 0664directory mask = 0775  设置访问密码： 1sudo smbpasswd -a yourname  启动并设置开机自启： 1sudo systemctl enable --now smb nmb  Windows 访问方式文件资源管理器地址栏输入...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/04/21/CMake%20%E8%AE%B0%E5%BD%95/" title="CMake 记录"><img class="post-bg" src="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p42.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CMake 记录"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/04/21/CMake%20%E8%AE%B0%E5%BD%95/" title="CMake 记录">CMake 记录</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-04-21T03:04:01.000Z" title="发表于 2023-04-21 11:04:01">2023-04-21</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BE%85%E5%88%86%E7%B1%BB/">待分类</a></span></div><div class="content">CMake 记录make 和 makefilegcc编译c程序文件，链接静态库和动态库，FFmpeg：https://ffmpeg.xianwaizhiyin.net/base-compile/linux-c-single.html Make和Makefile快速入门：https://blog.csdn.net/Naisu_kun/article/details/116918571 cmake 是 makefile 的上层工具，它们的目的正是为了产生可移植的 makefile，并简化自己动手写 makefile 时的巨大工作量。 常用命令如下： 12345678# cmake 最低版本需求cmake_minimum_required(VERSION 3.13)# 工程名称project(cmake_study)# 设置c++标准，这里是c++11set(CMAKE_CXX_STANDARD 11)# 编译源码生成目标add_executable(cmake_study src/main.cc)  SET(set)：定义变量语法：SET(VAR [VALUE] [CACHE...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/03/16/TCP%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93/" title="TCP的可靠数据传输"><img class="post-bg" src="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p33.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="TCP的可靠数据传输"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/03/16/TCP%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93/" title="TCP的可靠数据传输">TCP的可靠数据传输</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-03-16T02:21:41.000Z" title="发表于 2023-03-16 10:21:41">2023-03-16</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BE%85%E5%88%86%E7%B1%BB/">待分类</a></span></div><div class="content">TCP的可靠数据传输简述​	   众所周知，TCP是传输层中一种面向连接的、可靠的、基于字节流的通信协议，是网络通信中十分重要的桥梁。本文集中于对可靠的数据传输、流量控制以及拥塞控制三个内容的简单描述，需要读者对TCP有一定了解。 可靠的数据传输超时重传、快速重传、sack重传​      ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/03/15/Hexo+GitHub%20Pages%20%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="Hexo+Github Pages 搭建个人博客"><img class="post-bg" src="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p14.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo+Github Pages 搭建个人博客"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/03/15/Hexo+GitHub%20Pages%20%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="Hexo+Github Pages 搭建个人博客">Hexo+Github Pages 搭建个人博客</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-03-15T08:34:18.000Z" title="发表于 2023-03-15 16:34:18">2023-03-15</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BE%85%E5%88%86%E7%B1%BB/">待分类</a></span></div><div class="content">Hexo+GitHub Pages 搭建个人博客[TOC] 安装 Node.js 、 npm 和 Hexo CLI 安装 node.js 和 npm。 1sudo pacman -S nodejs npm  安装 hexo 。 123sudo npm install -g hexo-cli# 也可以使用 yay 安装yay -S hexo-cli  本地部署建议可选，新建一个 文件夹存放所有博客相关内容，方便管理。 1mkdir BlogAll  新建并初始化博客文件夹名以 YuanmxcBlog 为例。 12345cd BlogAllmkdir YuanmxcBlogcd YuanmxcBloghexo init # 初始化，这会在当前目录下生成一些默认文件npm install # 安装 package.json 内的项目所需的依赖包在 node_modules 内  初始化博客文件夹后，会在当前目录下生成一些默认文件。 123❯ ls_config.landscape.yml  node_modules  package-lock.json ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/08/16/C++%20Primer%20%E7%AC%94%E8%AE%B0/" title="C++ Primer 笔记"><img class="post-bg" src="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p36.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C++ Primer 笔记"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/16/C++%20Primer%20%E7%AC%94%E8%AE%B0/" title="C++ Primer 笔记">C++ Primer 笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-16T13:39:10.000Z" title="发表于 2022-08-16 21:39:10">2022-08-16</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BE%85%E5%88%86%E7%B1%BB/">待分类</a></span></div><div class="content">C++ Primer 笔记注意：本文并不是教你学 C++，这只是笔者阅读 《C++ primer》这本书的过程中记录的相关知识，适用于已经对 C++有所了解的读者进行复习和查询，读者至少对 C 和 C++有所了解。 逐页阅读小记第 2 章 变量和基本类型 有符号和无符号一起用，有符号转无符号。  double（一般 16 有效位）一般和 float（一般 7 有效位）运算代价相同，用 double 即可。  char16_t 和 char32_t 为 Unicode 字符，包含所有自然语言字符。  泛化的转义序列：\x 后跟 1 或多个十六进制数字或者 \ 后跟多个八进制数字：\12（换行符） \x4d（字符 M）  初始化不是赋值，定义变量时若未指定初始值，变量被 默认初始化，“默认值”由变量类型和定义位置决定。定义在任何函数体之外的内置类型变量会被默认初始化为...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/03/25/Git%20%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" title="Git 使用笔记"><img class="post-bg" src="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p19.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Git 使用笔记"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/03/25/Git%20%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" title="Git 使用笔记">Git 使用笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-25T12:29:36.000Z" title="发表于 2022-03-25 20:29:36">2022-03-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BE%85%E5%88%86%E7%B1%BB/">待分类</a></span></div><div class="content">Git 使用笔记基础使用远程仓库指 github 仓库（repositoris），本地仓库指自己被 git 管理的文件夹（含有.git 文件夹）。  重新与远程仓库建立联系，并可以提交代码（自己远程仓库有代码 , 本地无代码，比如重装系统或者换电脑）：  如果只是本地没有了仓库，在与远程仓库建立链接时提示”远程 origin 已存在 “，可以直接 commit+push。 12345678910111213141516# 克隆远程仓库到本地仓库git clone git@github.com:username/repository_name.git(远程仓库地址ssh）# cd 进本地仓库cd 仓库# 初始化 gitgit init# 与远程仓库建立链接（关联远程仓库，远程仓库名字叫 origin）git remote add origin git@github.com:username/repository_name.git(远程仓库地址ssh)# 获取远程更新git fetch origin# 把更新的内容合并到本地分支git merge origin/main#...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/other/touxiang2.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Yuanmxc</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Yuanmxc"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Yuanmxc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">不乱于心，不困于情。不畏将来，不念过往。</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/01/10/ArchLinux%20%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88%E5%B0%8F%E7%82%B9%E6%9D%82%E8%AE%B0%20%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/" title="ArchLinux 使用记录"><img src="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p43.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ArchLinux 使用记录"/></a><div class="content"><a class="title" href="/2025/01/10/ArchLinux%20%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88%E5%B0%8F%E7%82%B9%E6%9D%82%E8%AE%B0%20%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/" title="ArchLinux 使用记录">ArchLinux 使用记录</a><time datetime="2025-01-10T07:39:14.000Z" title="发表于 2025-01-10 15:39:14">2025-01-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/06/%E5%B0%86%20Python%20%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E4%B8%BA%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6/" title="将 Python 程序打包为可执行文件（Windows &amp; Linux）"><img src="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p26.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="将 Python 程序打包为可执行文件（Windows &amp; Linux）"/></a><div class="content"><a class="title" href="/2025/01/06/%E5%B0%86%20Python%20%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E4%B8%BA%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6/" title="将 Python 程序打包为可执行文件（Windows &amp; Linux）">将 Python 程序打包为可执行文件（Windows &amp; Linux）</a><time datetime="2025-01-06T08:36:14.000Z" title="发表于 2025-01-06 16:36:14">2025-01-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/06/Arch%20Linux%20%E4%B8%BA%20AppImage%20%E6%96%87%E4%BB%B6%E5%88%9B%E5%BB%BA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%90%AF%E5%8A%A8%E5%99%A8%E5%85%A5%E5%8F%A3/" title="将 Python 程序打包为可执行文件（Windows &amp; Linux）"><img src="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p6.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="将 Python 程序打包为可执行文件（Windows &amp; Linux）"/></a><div class="content"><a class="title" href="/2024/11/06/Arch%20Linux%20%E4%B8%BA%20AppImage%20%E6%96%87%E4%BB%B6%E5%88%9B%E5%BB%BA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%90%AF%E5%8A%A8%E5%99%A8%E5%85%A5%E5%8F%A3/" title="将 Python 程序打包为可执行文件（Windows &amp; Linux）">将 Python 程序打包为可执行文件（Windows &amp; Linux）</a><time datetime="2024-11-06T07:04:01.000Z" title="发表于 2024-11-06 15:04:01">2024-11-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/13/Arch%20Linux%20%E5%AE%89%E8%A3%85%20openpose%20%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" title="Arch Linux 安装 openpose 踩坑记录"><img src="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p29.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Arch Linux 安装 openpose 踩坑记录"/></a><div class="content"><a class="title" href="/2024/07/13/Arch%20Linux%20%E5%AE%89%E8%A3%85%20openpose%20%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" title="Arch Linux 安装 openpose 踩坑记录">Arch Linux 安装 openpose 踩坑记录</a><time datetime="2024-07-13T06:18:36.000Z" title="发表于 2024-07-13 14:18:36">2024-07-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/05/Arch%20Linux%20%E5%AE%89%E8%A3%85%20CUDA%20%E3%80%81TensorRT%20%20%E5%92%8C%20TensorRT-YOLO%20%E8%AE%B0%E5%BD%95/" title="Arch Linux 安装 CUDA 、TensorRT  和TensorRT-YOLO 记录"><img src="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p31.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Arch Linux 安装 CUDA 、TensorRT  和TensorRT-YOLO 记录"/></a><div class="content"><a class="title" href="/2024/07/05/Arch%20Linux%20%E5%AE%89%E8%A3%85%20CUDA%20%E3%80%81TensorRT%20%20%E5%92%8C%20TensorRT-YOLO%20%E8%AE%B0%E5%BD%95/" title="Arch Linux 安装 CUDA 、TensorRT  和TensorRT-YOLO 记录">Arch Linux 安装 CUDA 、TensorRT  和TensorRT-YOLO 记录</a><time datetime="2024-07-05T02:25:58.000Z" title="发表于 2024-07-05 10:25:58">2024-07-05</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%BE%85%E5%88%86%E7%B1%BB/"><span class="card-category-list-name">待分类</span><span class="card-category-list-count">19</span></a></li>
+          </ul></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      <a class="card-more-btn" href="/archives/"
+            title="查看更多">
+            <i class="fas fa-angle-right"></i>
+          </a>
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/01/">
+            <span class="card-archive-list-date">
+              一月 2025
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/11/">
+            <span class="card-archive-list-date">
+              十一月 2024
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/07/">
+            <span class="card-archive-list-date">
+              七月 2024
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/06/">
+            <span class="card-archive-list-date">
+              六月 2024
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/05/">
+            <span class="card-archive-list-date">
+              五月 2024
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/03/">
+            <span class="card-archive-list-date">
+              三月 2024
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/02/">
+            <span class="card-archive-list-date">
+              二月 2024
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2023/12/">
+            <span class="card-archive-list-date">
+              十二月 2023
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">19</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">57.9k</div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-03-03T14:06:29.649Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p2.png);"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2025 By Yuanmxc</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.3</a></div><div class="footer_custom_text">不乱于心，不困于情。不畏将来，不念过往。</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="/"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: subtitleType => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  }
+}
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
+</script><script>function subtitleType () {
+  fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+      if (true) {
+        const from = '出自 ' + data.from
+        const sub = []
+        sub.unshift(data.hitokoto, from)
+        typedJSFn.init(sub)
+      } else {
+        document.getElementById('subtitle').textContent = data.hitokoto
+      }
+    })
+}
+typedJSFn.run(subtitleType)
+</script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

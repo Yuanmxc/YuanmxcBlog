@@ -1,0 +1,450 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>随笔-24/3/25 | 陌上尘归处</title><meta name="author" content="Yuanmxc"><meta name="copyright" content="Yuanmxc"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="RSTP、RTP、RTCPRTSP RTP RTCPRTP(Real-time Transport Protocol)，即实时传输协议，是一个应用层的协议，定义了在网络上传输音频和视频的标准数据包的格式。通常说的 RTSP 包括 RTSP 协议、RTP 协议、RTCP 协议，对于这些协议的作用简单的理解如下：  RTSP协议：负责服务器与客户端之间的请求与响应   一般RTSP服务器会从设备（如摄">
+<meta property="og:type" content="article">
+<meta property="og:title" content="随笔-24&#x2F;3&#x2F;25">
+<meta property="og:url" content="http://example.com/2024/05/22/RSTP%E3%80%81RTP%E3%80%81RTCP%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="陌上尘归处">
+<meta property="og:description" content="RSTP、RTP、RTCPRTSP RTP RTCPRTP(Real-time Transport Protocol)，即实时传输协议，是一个应用层的协议，定义了在网络上传输音频和视频的标准数据包的格式。通常说的 RTSP 包括 RTSP 协议、RTP 协议、RTCP 协议，对于这些协议的作用简单的理解如下：  RTSP协议：负责服务器与客户端之间的请求与响应   一般RTSP服务器会从设备（如摄">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p7.png">
+<meta property="article:published_time" content="2024-05-22T10:13:45.000Z">
+<meta property="article:modified_time" content="2025-03-03T13:37:50.938Z">
+<meta property="article:author" content="Yuanmxc">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p7.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "随笔-24/3/25",
+  "url": "http://example.com/2024/05/22/RSTP%E3%80%81RTP%E3%80%81RTCP%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/",
+  "image": "https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p7.png",
+  "datePublished": "2024-05-22T10:13:45.000Z",
+  "dateModified": "2025-03-03T13:37:50.938Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Yuanmxc",
+      "url": "http://example.com/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/other/touxiang2.png"><link rel="canonical" href="http://example.com/2024/05/22/RSTP%E3%80%81RTP%E3%80%81RTCP%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+          
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'FancyBox',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '随笔-24/3/25',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load', preloader.endLoading)
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="web_bg" style="background-image: url(https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p2.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/other/touxiang2.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p7.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/other/touxiang2.png" alt="Logo"><span class="site-name">陌上尘归处</span></a><a class="nav-page-title" href="/"><span class="site-name">随笔-24/3/25</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">随笔-24/3/25</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-05-22T10:13:45.000Z" title="发表于 2024-05-22 18:13:45">2024-05-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-03T13:37:50.938Z" title="更新于 2025-03-03 21:37:50">2025-03-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%BE%85%E5%88%86%E7%B1%BB/">待分类</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">3.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>14分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="RSTP、RTP、RTCP"><a href="#RSTP、RTP、RTCP" class="headerlink" title="RSTP、RTP、RTCP"></a>RSTP、RTP、RTCP</h1><h2 id="RTSP-RTP-RTCP"><a href="#RTSP-RTP-RTCP" class="headerlink" title="RTSP RTP RTCP"></a>RTSP RTP RTCP</h2><p>RTP(Real-time Transport Protocol)，即实时传输协议，是一个应用层的协议，定义了在网络上传输音频和视频的标准数据包的格式。通常说的 RTSP 包括 RTSP 协议、RTP 协议、RTCP 协议，对于这些协议的作用简单的理解如下：</p>
+<ul>
+<li><p>RTSP协议：负责服务器与客户端之间的<strong>请求与响应</strong></p>
+<p>  一般RTSP服务器会从设备（如摄像头）中获取媒体流，并提供一个 RTSP URL 供客户端进行连接，客户端通过 RTSP URL 向服务器发起连接请求，服务器响应，两者开始交换数据，最后建立连接。</p>
+</li>
+<li><p>RTP协议：负责服务器与客户端之间<strong>传输媒体数据</strong></p>
+<p>  RTP 的端口号通常为偶数，在连接建立后，客户端请求媒体数据，之后服务器通过将媒体流封装为 RTP 包发送给客户端。通常 RTP 的端口为偶数。可以使用 TCP 或者 UDP，一般使用 UDP 并使用 RTCP 协议保证流媒体音视频质量。仅仅是发包。</p>
+</li>
+<li><p>RTCP 协议：负责提供有关RTP传输质量的反馈，就是<strong>确保RTP传输的质量</strong></p>
+<p>  RTCP 的端口号通肠为对应的 RTP 端口号加1。通过 RTCP 协议来对 RTP 包进行控制。</p>
+</li>
+<li><p>三者的关系：rtsp 并不会发送媒体数据，只是完成服务器和客户端之间的信令交互，rtp 协议负责媒体数据传输，rtcp 负责 rtp 数据包的监视和反馈。rtp 和 rtcp 并没有规定传输层的类型，可以选择 udp 和 tcp。Rtsp 的传输层则要求是基于 tcp。</p>
+</li>
+</ul>
+<h2 id="RTSP-协议"><a href="#RTSP-协议" class="headerlink" title="RTSP 协议"></a>RTSP 协议</h2><p>嵌入式设备（如摄像头）通过服务器生成一个 RTSP URL，客户端通过这个 URL 与服务器建立连接传输媒体流，建立连接的过程用 RTSP（传输层用 TCP ）来完成信令的交互。连接建立后通过 RTP 协议来传输媒体流数据包，通过 RTCP 协议来负责 RTP 数据包的监视和反馈。两者可以选择使用 UDP 或者 TCP。</p>
+<h3 id="RTSP-URL"><a href="#RTSP-URL" class="headerlink" title="RTSP URL"></a>RTSP URL</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rtsp_URL = <span class="string">&quot;rtsp://&quot;</span> host [<span class="string">&quot;:&quot;</span> port] [ abs_path ]</span><br><span class="line">host: 有效的域名或 IP 地址</span><br><span class="line">port: 端口号，缺省为 554，若为缺省可不填写，否则必须写明</span><br><span class="line">例如：rtsp://media.example.com:554/twister/audiotrack</span><br></pre></td></tr></table></figure>
+
+<p>以海康摄像机为例，其 RTSP URL 格式为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rtsp://[username]:[password]@[ip]:[port]/[channel]/[subtype]/av_stream</span><br><span class="line">例如：</span><br><span class="line">rtsp://admin:12345@192.168.1.67:554/h264/ch1/main/av_stream</span><br><span class="line">rtsp://admin:12345@192.168.1.67/mpeg4/ch1/sub/av_stream</span><br></pre></td></tr></table></figure>
+
+<h3 id="RTSP-报文"><a href="#RTSP-报文" class="headerlink" title="RTSP 报文"></a>RTSP 报文</h3><p>RTSP 是一种基于文本的协议，用 CRLF (回车换行) 作为每一行的结束符，其好处是，在使用过程中可以方便地增加自定义参数，也方便抓包分析。从消息传送方向上来分，RTSP 的报文有两类：请求报文和响应报文。请求报文是指从客户端向服务器发送的请求 (也有少量从服务器向客户端发送的请求)，响应报文是指从服务器到客户端的回应。</p>
+<p>RTSP 请求报文的常用方法：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>方向</th>
+<th>对象</th>
+<th>是否必要</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DESCRIBE</td>
+<td>C-&gt;S</td>
+<td>P, S</td>
+<td>推荐</td>
+<td>得到会话描述信息</td>
+</tr>
+<tr>
+<td>ANNOUNCE</td>
+<td>C-&gt;S, S-&gt;C</td>
+<td>P, S</td>
+<td>可选</td>
+<td></td>
+</tr>
+<tr>
+<td>GET_PARAMETER</td>
+<td>C-&gt;S, S-&gt;C</td>
+<td>P, S</td>
+<td>可选</td>
+<td></td>
+</tr>
+<tr>
+<td>OPTIONS</td>
+<td>C-&gt;S, S-&gt;C</td>
+<td>P, S</td>
+<td>必须 (S-&gt;C: 可选)</td>
+<td>获得服务器提供的可用方法</td>
+</tr>
+<tr>
+<td>PAUSE</td>
+<td>C-&gt;S</td>
+<td>P, S</td>
+<td>推荐</td>
+<td>客户端发起暂停播放请求</td>
+</tr>
+<tr>
+<td>PLAY</td>
+<td>C-&gt;S</td>
+<td>P, S</td>
+<td>必须</td>
+<td>客户端发起播放请求</td>
+</tr>
+<tr>
+<td>RECORD</td>
+<td>C-&gt;S</td>
+<td>P, S</td>
+<td>可选</td>
+<td></td>
+</tr>
+<tr>
+<td>REDIRECT</td>
+<td>S-&gt;C</td>
+<td>P, S</td>
+<td>可选</td>
+<td></td>
+</tr>
+<tr>
+<td>SETUP</td>
+<td>C-&gt;S</td>
+<td>S</td>
+<td>必须</td>
+<td>客户端请求建立会话</td>
+</tr>
+<tr>
+<td>SET_PARAMETER</td>
+<td>C-&gt;S, S-&gt;C</td>
+<td>P, S</td>
+<td>可选</td>
+<td></td>
+</tr>
+<tr>
+<td>TEARDOWN</td>
+<td>C-&gt;S</td>
+<td>P, S</td>
+<td>必须</td>
+<td>客户端发起关闭会话</td>
+</tr>
+</tbody></table>
+<p>通过 <code>VLC</code> 播放 <code>RTSP</code> 网络流，经抓包得以下内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">OPTIONS rtsp://192.168.199.152:554/live/test RTSP/1.0</span><br><span class="line">CSeq: 2</span><br><span class="line">User-Agent: LibVLC/3.0.8 (LIVE555 Streaming Media v2016.11.28)</span><br><span class="line"></span><br><span class="line">RTSP/1.0 200 OK</span><br><span class="line">CSeq: 2</span><br><span class="line">Date: Mon, Jul 27 2020 15:32:38 GMT</span><br><span class="line">Public: OPTIONS, DESCRIBE, SETUP, TEARDOWN, PLAY, PAUSE, ANNOUNCE, RECORD, SET_PARAMETER, GET_PARAMETER</span><br><span class="line">Server: ZLMediaKit-5.0(build <span class="keyword">in</span> Jul 12 2020 14:02:13)</span><br><span class="line"></span><br><span class="line">DESCRIBE rtsp://192.168.199.152:554/live/test RTSP/1.0</span><br><span class="line">CSeq: 3</span><br><span class="line">User-Agent: LibVLC/3.0.8 (LIVE555 Streaming Media v2016.11.28)</span><br><span class="line">Accept: application/sdp</span><br><span class="line"></span><br><span class="line">RTSP/1.0 200 OK</span><br><span class="line">Content-Base: rtsp://192.168.199.152:554/live/test/</span><br><span class="line">Content-Length: 544</span><br><span class="line">Content-Type: application/sdp</span><br><span class="line">CSeq: 3</span><br><span class="line">Date: Mon, Jul 27 2020 15:32:38 GMT</span><br><span class="line">Server: ZLMediaKit-5.0(build <span class="keyword">in</span> Jul 12 2020 14:02:13)</span><br><span class="line">Session: hEu0JzMKcfK2</span><br><span class="line">x-Accept-Dynamic-Rate: 1</span><br><span class="line">x-Accept-Retransmit: our-retransmit</span><br><span class="line"></span><br><span class="line">v=0</span><br><span class="line">o=- 0 0 IN IP4 127.0.0.1</span><br><span class="line">c=IN IP4 127.0.0.1</span><br><span class="line">t=0 0</span><br><span class="line">s=Streamed by ZLMediaKit-5.0(build <span class="keyword">in</span> Jul 12 2020 14:01:57)</span><br><span class="line">a=tool:libavformat 58.29.100</span><br><span class="line">m=video 0 RTP/AVP 96</span><br><span class="line">a=fmtp:96 packetization-mode=1; sprop-parameter-sets=Z2QAHqzZQNg95f/wFAAUEQAAAwABAAADADIPFi2W,aOvjyyLA; profile-level-id=64001E</span><br><span class="line">a=rtpmap:96 H264/90000</span><br><span class="line">a=control:streamid=0</span><br><span class="line">m=audio 0 RTP/AVP 97</span><br><span class="line">b=AS:128</span><br><span class="line">a=fmtp:97 profile-level-id=1;mode=AAC-hbr;sizelength=13;indexlength=3;indexdeltalength=3; config=121056E500</span><br><span class="line">a=rtpmap:97 MPEG4-GENERIC/44100/2</span><br><span class="line">a=control:streamid=1</span><br><span class="line">SETUP rtsp://192.168.199.152:554/live/test/streamid=0 RTSP/1.0</span><br><span class="line">CSeq: 4</span><br><span class="line">User-Agent: LibVLC/3.0.8 (LIVE555 Streaming Media v2016.11.28)</span><br><span class="line">Transport: RTP/AVP;unicast;client_port=60836-60837</span><br><span class="line"></span><br><span class="line">RTSP/1.0 200 OK</span><br><span class="line">CSeq: 4</span><br><span class="line">Date: Mon, Jul 27 2020 15:32:38 GMT</span><br><span class="line">Server: ZLMediaKit-5.0(build <span class="keyword">in</span> Jul 12 2020 14:02:13)</span><br><span class="line">Session: hEu0JzMKcfK2</span><br><span class="line">Transport: RTP/AVP/UDP;unicast;client_port=60836-60837;server_port=41070-41071;ssrc=50E36E3B</span><br><span class="line"></span><br><span class="line">SETUP rtsp://192.168.199.152:554/live/test/streamid=1 RTSP/1.0</span><br><span class="line">CSeq: 5</span><br><span class="line">User-Agent: LibVLC/3.0.8 (LIVE555 Streaming Media v2016.11.28)</span><br><span class="line">Transport: RTP/AVP;unicast;client_port=60838-60839</span><br><span class="line">Session: hEu0JzMKcfK2</span><br><span class="line"></span><br><span class="line">RTSP/1.0 200 OK</span><br><span class="line">CSeq: 5</span><br><span class="line">Date: Mon, Jul 27 2020 15:32:38 GMT</span><br><span class="line">Server: ZLMediaKit-5.0(build <span class="keyword">in</span> Jul 12 2020 14:02:13)</span><br><span class="line">Session: hEu0JzMKcfK2</span><br><span class="line">Transport: RTP/AVP/UDP;unicast;client_port=60838-60839;server_port=58452-58453;ssrc=3463B21F</span><br><span class="line"></span><br><span class="line">PLAY rtsp://192.168.199.152:554/live/test/ RTSP/1.0</span><br><span class="line">CSeq: 6</span><br><span class="line">User-Agent: LibVLC/3.0.8 (LIVE555 Streaming Media v2016.11.28)</span><br><span class="line">Session: hEu0JzMKcfK2</span><br><span class="line">Range: npt=0.000-</span><br><span class="line"></span><br><span class="line">RTSP/1.0 200 OK</span><br><span class="line">CSeq: 6</span><br><span class="line">Date: Mon, Jul 27 2020 15:32:38 GMT</span><br><span class="line">Range: npt=42535.41</span><br><span class="line">RTP-Info: url=rtsp://192.168.199.152:554/live/test/streamid=0;<span class="built_in">seq</span>=3889;rtptime=-466780396,url=rtsp://192.168.199.152:554/live/test/streamid=1;<span class="built_in">seq</span>=1155;rtptime=-179511072</span><br><span class="line">Server: ZLMediaKit-5.0(build <span class="keyword">in</span> Jul 12 2020 14:02:13)</span><br><span class="line">Session: hEu0JzMKcfK2</span><br><span class="line"></span><br><span class="line">TEARDOWN rtsp://192.168.199.152:554/live/test/ RTSP/1.0</span><br><span class="line">CSeq: 7</span><br><span class="line">User-Agent: LibVLC/3.0.8 (LIVE555 Streaming Media v2016.11.28)</span><br><span class="line">Session: hEu0JzMKcfK2</span><br><span class="line"></span><br><span class="line">RTSP/1.0 200 OK</span><br><span class="line">CSeq: 7</span><br><span class="line">Date: Mon, Jul 27 2020 15:32:41 GMT</span><br><span class="line">Server: ZLMediaKit-5.0(build <span class="keyword">in</span> Jul 12 2020 14:02:13)</span><br><span class="line">Session: hEu0JzMKcfK2</span><br></pre></td></tr></table></figure>
+
+<p>从上述抓包中看出，VLC 在播放 RTSP 网络流时，客户端与服务端经过了 6 次交互：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>方向</th>
+<th>方法</th>
+<th>消息内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>C-&gt;S</td>
+<td>OPTIONS</td>
+<td>Client 询问 Server 有哪些方法可用</td>
+</tr>
+<tr>
+<td>1</td>
+<td>S-&gt;C</td>
+<td>OPTIONS</td>
+<td>Server 回应所有可用的方法</td>
+</tr>
+<tr>
+<td>2</td>
+<td>C-&gt;S</td>
+<td>DESCRIBE</td>
+<td>Client 请求得到 Server 提供的媒体初始化描述信息</td>
+</tr>
+<tr>
+<td>2</td>
+<td>S-&gt;C</td>
+<td>DESCRIBE</td>
+<td>Server 回应媒体初始化信息，主要是 SDP （会话描述协议）</td>
+</tr>
+<tr>
+<td>3</td>
+<td>C-&gt;S</td>
+<td>SETUP</td>
+<td>设置视频会话属性以及传输模式，请求建立会话</td>
+</tr>
+<tr>
+<td>3</td>
+<td>S-&gt;C</td>
+<td>SETUP</td>
+<td>Server 建立会话，返回会话标识以及会话相关信息</td>
+</tr>
+<tr>
+<td>4</td>
+<td>C-&gt;S</td>
+<td>SETUP</td>
+<td>设置音频会话属性以及传输模式，请求建立会话</td>
+</tr>
+<tr>
+<td>4</td>
+<td>S-&gt;C</td>
+<td>SETUP</td>
+<td>Server 建立会话，返回会话标识以及会话相关信息</td>
+</tr>
+<tr>
+<td>5</td>
+<td>C-&gt;S</td>
+<td>PLAY</td>
+<td>Client 请求播放</td>
+</tr>
+<tr>
+<td>5</td>
+<td>S-&gt;C</td>
+<td>PLAY</td>
+<td>Server 回应播放请求</td>
+</tr>
+<tr>
+<td>6</td>
+<td>C-&gt;S</td>
+<td>TEARDOWN</td>
+<td>Client 请求关闭会话</td>
+</tr>
+<tr>
+<td>6</td>
+<td>S-&gt;C</td>
+<td>TEARDOWN</td>
+<td>Server 回应关闭会话请求</td>
+</tr>
+</tbody></table>
+<p>下面我们一步一步了解 RTSP 会话建立流程：</p>
+<h3 id="OPTIONS"><a href="#OPTIONS" class="headerlink" title="OPTIONS"></a>OPTIONS</h3><p>OPTIONS 请求可以在任何时间被发出，而且不会影响到 Server 的状态，例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">C-&gt;S:  OPTIONS * RTSP/1.0</span><br><span class="line">       CSeq: 1</span><br><span class="line">       Require: implicit-play</span><br><span class="line">       Proxy-Require: gzipped-messages</span><br><span class="line"></span><br><span class="line">S-&gt;C:  RTSP/1.0 200 OK</span><br><span class="line">       CSeq: 1</span><br><span class="line">       Public: DESCRIBE, SETUP, TEARDOWN, PLAY, PAUSE</span><br></pre></td></tr></table></figure>
+
+<h3 id="DESCRIBE"><a href="#DESCRIBE" class="headerlink" title="DESCRIBE"></a>DESCRIBE</h3><p>客户端向服务器请求媒体资源描述，服务器端通过 SDP (Session Description Protocol) 格式回应客户端的请求。资源描述中会列出所请求媒体的媒体流及其相关信息，典型情况下，音频和视频分别作为一个媒体流传输。例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">C-&gt;S: DESCRIBE rtsp://server.example.com/fizzle/foo RTSP/1.0</span><br><span class="line">      CSeq: 312</span><br><span class="line">      Accept: application/sdp, application/rtsl, application/mheg</span><br><span class="line"></span><br><span class="line">S-&gt;C: RTSP/1.0 200 OK</span><br><span class="line">      CSeq: 312</span><br><span class="line">      Date: 23 Jan 1997 15:35:06 GMT</span><br><span class="line">      Content-Type: application/sdp</span><br><span class="line">      Content-Length: 376</span><br><span class="line"></span><br><span class="line">      v=0</span><br><span class="line">      o=mhandley 2890844526 2890842807 IN IP4 126.16.64.4</span><br><span class="line">      s=SDP Seminar</span><br><span class="line">      i=A Seminar on the session description protocol</span><br><span class="line">      u=http://www.cs.ucl.ac.uk/staff/M.Handley/sdp.03.ps</span><br><span class="line">      e=mjh@isi.edu (Mark Handley)</span><br><span class="line">      c=IN IP4 224.2.17.12/127</span><br><span class="line">      t=2873397496 2873404696</span><br><span class="line">      a=recvonly</span><br><span class="line">      m=audio 3456 RTP/AVP 0</span><br><span class="line">      m=video 2232 RTP/AVP 31</span><br><span class="line">      m=whiteboard 32416 UDP WB</span><br><span class="line">      a=orient:portrait</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>媒体流及其相关信息由 SDP (Session Description Protocol) 格式携带，关于 SDP 的详细说明，参见拓展阅读 5</p>
+</blockquote>
+<h3 id="SETUP"><a href="#SETUP" class="headerlink" title="SETUP"></a>SETUP</h3><p>SETUP 请求确定了具体的媒体流如何传输，该请求必须在 PLAY 请求之前发送。SETUP 请求包含媒体流的 URL 和客户端用于接收 RTP 数据 (audio or video) 的端口以及接收 RTCP 数据 (meta information) 的端口。服务器端的回复通常包含客户端请求参数的确认，并会补充缺失的部分，比如服务器选择的发送端口。每一个媒体流在发送 PLAY 请求之前，都要首先通过 SETUP 请求来进行相应的配置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">C-&gt;S: SETUP rtsp://example.com/foo/bar/baz.rm RTSP/1.0</span><br><span class="line">      CSeq: 302</span><br><span class="line">      Transport: RTP/AVP;unicast;client_port=4588-4589</span><br><span class="line"></span><br><span class="line">S-&gt;C: RTSP/1.0 200 OK</span><br><span class="line">      CSeq: 302</span><br><span class="line">      Date: 23 Jan 1997 15:35:06 GMT</span><br><span class="line">      Session: 47112344</span><br><span class="line">      Transport: RTP/AVP;unicast;client_port=4588-4589;server_port=6256-6257</span><br></pre></td></tr></table></figure>
+
+<h3 id="PLAY"><a href="#PLAY" class="headerlink" title="PLAY"></a>PLAY</h3><p>客户端通过 PLAY 请求来播放一个或全部媒体流，PLAY 请求可以发送一次或多次，发送一次时，URL 为包含所有媒体流的地址，发送多次时，每一次请求携带的 URL 只包含一个相应的媒体流。PLAY 请求中可指定播放的 range，若未指定，则从媒体流的开始播放到结束，如果媒体流在播放过程中被暂停，则可在暂停处重新启动流的播放。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">C-&gt;S: PLAY rtsp://example.com/media.mp4 RTSP/1.0</span><br><span class="line">      CSeq: 4</span><br><span class="line">      Range: npt=5-20</span><br><span class="line">      Session: 12345678</span><br><span class="line"></span><br><span class="line">S-&gt;C: RTSP/1.0 200 OK</span><br><span class="line">      CSeq: 4</span><br><span class="line">      Session: 12345678</span><br><span class="line">      RTP-Info: url=rtsp://example.com/media.mp4/streamid=0;<span class="built_in">seq</span>=9810092;rtptime=3450012</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Server 处理 client 发来的 PLAY 请求后，就会开始向 client 发送媒体数据，一般采用 RTP 协议进行发送，关于 RTP 协议的相关说明，参见拓展阅读 6</p>
+</blockquote>
+<h3 id="TEARDOWN"><a href="#TEARDOWN" class="headerlink" title="TEARDOWN"></a>TEARDOWN</h3><p>结束会话请求，该请求会停止所有媒体流，并释放服务器上的相关会话数据。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">C-&gt;S: TEARDOWN rtsp://example.com/media.mp4 RTSP/1.0</span><br><span class="line">      CSeq: 8</span><br><span class="line">      Session: 12345678</span><br><span class="line"></span><br><span class="line">S-&gt;C: RTSP/1.0 200 OK</span><br><span class="line">      CSeq: 8</span><br></pre></td></tr></table></figure>
+
+<h2 id="RTP-协议"><a href="#RTP-协议" class="headerlink" title="RTP 协议"></a>RTP 协议</h2><p>在 RTSP 的流媒体服务器中音视频的传输通过 RTP 封装将音视频帧封装为若干个 RTP 包。每个 RTP 包由 RTP Header 和音视频载荷(Payload)组成。RTP Header包含固定头和扩展头，RTP 固定头通常占 12 字节，扩展头大小可变通常不用。</p>
+<h3 id="RTP-Header"><a href="#RTP-Header" class="headerlink" title="RTP Header"></a>RTP Header</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> 0                   1                   2                   3</span><br><span class="line"> 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">|V=2|P|X|  CC   |M|     PT      |       sequence number         |</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">|                           timestamp                           |</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">|           synchronization <span class="built_in">source</span> (SSRC) identifier            |</span><br><span class="line">+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+</span><br><span class="line">|            contributing <span class="built_in">source</span> (CSRC) identifiers             |</span><br><span class="line">|                             ....                              |</span><br><span class="line">+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br></pre></td></tr></table></figure>
+
+<p>这 12 个字节组成的 RTP 固定头出现在每个 RTP 数据包中，这些字段具有的含义如下：</p>
+<ul>
+<li>**版本 (V)**：2 位，该字段标识 RTP 的版本。RFC3550 定义的版本规范为 2.</li>
+<li>**填充 (P)**：1 位，如果设置了填充位，则数据包包含一个或多个末尾的其他填充字节不属于有效载荷。</li>
+<li>**扩展名 (X)**：1 位，如果扩展位被置位，则固定报头必须后跟一个扩展头部。</li>
+<li>**CSRC 计数 (CC)**：4 位，CSRC 计数包含随后的 CSRC 标识符的数量固定头。</li>
+<li>**标记 (M)**：1 位，由配置文件定义，它允许诸如框架边界之类的重要事件发生在数据包流中被标记。</li>
+</ul>
+<blockquote>
+<p>**标记 (M)**：1 位，标识此 RTP 包携带了一组 NAL 数据的最后一个 NAL Unit。（RFC 6184）</p>
+</blockquote>
+<ul>
+<li>**有效载荷类型 (PT)**：7 位，该字段标识 RTP 有效负载的格式并确定由应用程序对其进行解释。一个配置文件可以指定一个负载类型代码到负载格式的默认静态映射。</li>
+<li>**序列号 (sequence number)**：16 位，每个 RTP 数据包的序列号加 1 发送，接收方可以使用它来检测丢包并恢复报文序列，序号的初始值应该是随机的。</li>
+<li>**时间戳 (timestamp)**：32 位，时间戳记录了该包中数据的第一个字节的采样时刻。在一次会话开始时，时间戳初始化成一个初始值。即使在没有信号发送时，时间戳的数值也要随时间而不断地增加（时间在流逝嘛）。时间戳是去除抖动和实现同步不可缺少的。</li>
+<li>**同步源标识符 (SSRC)**：32 位，同步源就是指 RTP 包流的来源。在同一个 RTP 会话中不能有两个相同的 SSRC 值。该标识符是随机选取的 RFC1889 推荐了 MD5 随机算法。</li>
+<li>**贡献源列表 (CSRC List)**：0～15 项，每项 32 位，用来标志对一个 RTP 混合器产生的新包有贡献的所有 RTP 包的源。由混合器将这些有贡献的 SSRC 标识符插入表中。SSRC 标识符都被列出来，以便接收端能正确指出交谈双方的身份。</li>
+</ul>
+<h3 id="RTP-载荷"><a href="#RTP-载荷" class="headerlink" title="RTP 载荷"></a>RTP 载荷</h3><p>在 RTSP 等实时流传输中常见的编码格式是 H264&#x2F;H265 以及音频 AAC。不同的编码格式在 RTP 包中的封装过程有所不同，比如 H264 和 H265 需要去掉码流中的启始码 (0x000001)，音频 AAC 需要去掉 AAC 的头部字段 ADTS 数据，在 H264 封装 RTP 包过程需要去掉1个字节的 NAL Unit 头，在 H265 封装过程需要去掉2个字节的 NAL Unit 头。</p>
+<ul>
+<li>[1] <a target="_blank" rel="noopener" href="https://github.com/xia-chu/ZLMediaKit">ZLMediaKit</a> （作为 RTSP Server）</li>
+<li>[2] <a target="_blank" rel="noopener" href="https://www.videolan.org/">VLC</a> （作为 RTSP Client）</li>
+<li>[3] <a target="_blank" rel="noopener" href="https://www.cnblogs.com/linhaostudy/p/11140823.html">yooooooo 的博客园：《网络流媒体协议之 ——RTSP 协议》</a></li>
+<li>[4] <a target="_blank" rel="noopener" href="https://www.rfc-editor.org/rfc/rfc2326.txt">RFC 2326: Real Time Streaming Protocol (RTSP)</a></li>
+<li>[5] <a target="_blank" rel="noopener" href="https://www.rfc-editor.org/rfc/rfc3551.txt">RFC 3551: RTP Profile for Audio and Video Conferences with Minimal Control</a></li>
+<li>[6] <a target="_blank" rel="noopener" href="https://www.rfc-editor.org/rfc/rfc6184.txt">RFC 6184: RTP Payload Format for H.264 Video</a></li>
+<li>[7] <a target="_blank" rel="noopener" href="https://www.rfc-editor.org/rfc/rfc3550.txt">RFC 3550: RTP: A Transport Protocol for Real-Time Applications</a></li>
+<li>[8] <a target="_blank" rel="noopener" href="https://hezhaojiang.github.io/post/2020/cf84018a/">流媒体传输 - RTSP 协议</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Yuanmxc</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/05/22/RSTP%E3%80%81RTP%E3%80%81RTCP%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">http://example.com/2024/05/22/RSTP%E3%80%81RTP%E3%80%81RTCP%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">陌上尘归处</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p7.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2024/05/14/FFmpeg%20%E8%A7%A3%E7%A0%81%E8%A7%86%E9%A2%91%E6%B5%81/" title="FFmpeg 解码视频流"><img class="cover" src="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p19.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">FFmpeg 解码视频流</div></div><div class="info-2"><div class="info-item-1">FFmpeg 解码视频流前言本文讲解从网络接收 H.265 视频裸流后使用 FFmpeg 相关库解码得到 YUVJ420P 格式的图片然后转为 RGB 格式图片并使用 jpeglib 库保存为 jpeg 文件。仅展示部分代码。 包含对 FFmpeg 的解码 H.265 视频裸流、图片保存格式 YUV 和 RGB 及两者之间的转换、jpeglib 将 RGB 格式图片保存为 jpeg 文件的相关内容。 FFmpeg 库包含各种库，本文主要使用到以下库： libavcodec 编码&#x2F;解码库 libavformat I&#x2F;O 和复用&#x2F;解复用库 libavutil 通用实用程序库 libswscale 颜色转换和缩放库 跟解码相关的结构体 AVCodecContext：可以是 编码器 的上下文，也可以是 解码器 的上下文，两者使用的是同一种数据结构（后面有些结构体和...</div></div></div></a><a class="pagination-related" href="/2024/06/02/GSteamer%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="GSteamer 学习笔记"><img class="cover" src="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p12.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">GSteamer 学习笔记</div></div><div class="info-2"><div class="info-item-1">GSteamer 学习笔记前言本文是笔者阅读 GStreamer 官方文档去学习 GStreamer 时的记录，大部分内容可以在 GStreamer 官方文档中找到。 笔者学习 GStreamer 的主要目的是：使用 GStreamer 处理从 TCP Socket 接收到的 H.265 裸流（使用 live555 的 testRTSPclient 程序从 RTSP URL 中获取到），将其解码并保存为 jpeg 图片。 笔者最终放弃使用 GStreamer 的想法，使用 FFmpeg 完成了上述目的。 Elements 元素GStreamer 中最重要的对象是 GstElement 对象。元素是媒体管道的基本构建基块。使用的所有不同的高级组件都派生自 GstElement 。每个解码器、编码器、解复用器、视频或音频输出实际上都是一个...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/other/touxiang2.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Yuanmxc</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Yuanmxc"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Yuanmxc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">不乱于心，不困于情。不畏将来，不念过往。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#RSTP%E3%80%81RTP%E3%80%81RTCP"><span class="toc-number">1.</span> <span class="toc-text">RSTP、RTP、RTCP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#RTSP-RTP-RTCP"><span class="toc-number">1.1.</span> <span class="toc-text">RTSP RTP RTCP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RTSP-%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.2.</span> <span class="toc-text">RTSP 协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RTSP-URL"><span class="toc-number">1.2.1.</span> <span class="toc-text">RTSP URL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RTSP-%E6%8A%A5%E6%96%87"><span class="toc-number">1.2.2.</span> <span class="toc-text">RTSP 报文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OPTIONS"><span class="toc-number">1.2.3.</span> <span class="toc-text">OPTIONS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DESCRIBE"><span class="toc-number">1.2.4.</span> <span class="toc-text">DESCRIBE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SETUP"><span class="toc-number">1.2.5.</span> <span class="toc-text">SETUP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PLAY"><span class="toc-number">1.2.6.</span> <span class="toc-text">PLAY</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TEARDOWN"><span class="toc-number">1.2.7.</span> <span class="toc-text">TEARDOWN</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RTP-%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.3.</span> <span class="toc-text">RTP 协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RTP-Header"><span class="toc-number">1.3.1.</span> <span class="toc-text">RTP Header</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RTP-%E8%BD%BD%E8%8D%B7"><span class="toc-number">1.3.2.</span> <span class="toc-text">RTP 载荷</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/01/10/ArchLinux%20%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88%E5%B0%8F%E7%82%B9%E6%9D%82%E8%AE%B0%20%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/" title="ArchLinux 使用记录"><img src="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p43.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ArchLinux 使用记录"/></a><div class="content"><a class="title" href="/2025/01/10/ArchLinux%20%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88%E5%B0%8F%E7%82%B9%E6%9D%82%E8%AE%B0%20%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/" title="ArchLinux 使用记录">ArchLinux 使用记录</a><time datetime="2025-01-10T07:39:14.000Z" title="发表于 2025-01-10 15:39:14">2025-01-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/06/%E5%B0%86%20Python%20%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E4%B8%BA%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6/" title="将 Python 程序打包为可执行文件（Windows &amp; Linux）"><img src="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p26.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="将 Python 程序打包为可执行文件（Windows &amp; Linux）"/></a><div class="content"><a class="title" href="/2025/01/06/%E5%B0%86%20Python%20%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E4%B8%BA%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6/" title="将 Python 程序打包为可执行文件（Windows &amp; Linux）">将 Python 程序打包为可执行文件（Windows &amp; Linux）</a><time datetime="2025-01-06T08:36:14.000Z" title="发表于 2025-01-06 16:36:14">2025-01-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/06/Arch%20Linux%20%E4%B8%BA%20AppImage%20%E6%96%87%E4%BB%B6%E5%88%9B%E5%BB%BA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%90%AF%E5%8A%A8%E5%99%A8%E5%85%A5%E5%8F%A3/" title="将 Python 程序打包为可执行文件（Windows &amp; Linux）"><img src="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p6.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="将 Python 程序打包为可执行文件（Windows &amp; Linux）"/></a><div class="content"><a class="title" href="/2024/11/06/Arch%20Linux%20%E4%B8%BA%20AppImage%20%E6%96%87%E4%BB%B6%E5%88%9B%E5%BB%BA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%90%AF%E5%8A%A8%E5%99%A8%E5%85%A5%E5%8F%A3/" title="将 Python 程序打包为可执行文件（Windows &amp; Linux）">将 Python 程序打包为可执行文件（Windows &amp; Linux）</a><time datetime="2024-11-06T07:04:01.000Z" title="发表于 2024-11-06 15:04:01">2024-11-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/13/Arch%20Linux%20%E5%AE%89%E8%A3%85%20openpose%20%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" title="Arch Linux 安装 openpose 踩坑记录"><img src="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p29.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Arch Linux 安装 openpose 踩坑记录"/></a><div class="content"><a class="title" href="/2024/07/13/Arch%20Linux%20%E5%AE%89%E8%A3%85%20openpose%20%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" title="Arch Linux 安装 openpose 踩坑记录">Arch Linux 安装 openpose 踩坑记录</a><time datetime="2024-07-13T06:18:36.000Z" title="发表于 2024-07-13 14:18:36">2024-07-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/05/Arch%20Linux%20%E5%AE%89%E8%A3%85%20CUDA%20%E3%80%81TensorRT%20%20%E5%92%8C%20TensorRT-YOLO%20%E8%AE%B0%E5%BD%95/" title="Arch Linux 安装 CUDA 、TensorRT  和TensorRT-YOLO 记录"><img src="https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p31.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Arch Linux 安装 CUDA 、TensorRT  和TensorRT-YOLO 记录"/></a><div class="content"><a class="title" href="/2024/07/05/Arch%20Linux%20%E5%AE%89%E8%A3%85%20CUDA%20%E3%80%81TensorRT%20%20%E5%92%8C%20TensorRT-YOLO%20%E8%AE%B0%E5%BD%95/" title="Arch Linux 安装 CUDA 、TensorRT  和TensorRT-YOLO 记录">Arch Linux 安装 CUDA 、TensorRT  和TensorRT-YOLO 记录</a><time datetime="2024-07-05T02:25:58.000Z" title="发表于 2024-07-05 10:25:58">2024-07-05</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://cdn.jsdelivr.net/gh/Yuanmxc/PicturesAll/BlogWebsite/Background/p7.png);"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2025 By Yuanmxc</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.3</a></div><div class="footer_custom_text">不乱于心，不困于情。不畏将来，不念过往。</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="/"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
