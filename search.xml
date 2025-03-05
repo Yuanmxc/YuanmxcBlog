@@ -334,271 +334,6 @@
       </categories>
   </entry>
   <entry>
-    <title>ArchLinux 使用记录</title>
-    <url>/2025/01/10/ArchLinux%20%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88%E5%B0%8F%E7%82%B9%E6%9D%82%E8%AE%B0%20%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
-    <content><![CDATA[<h1 id="ArchLinux-使用记录"><a href="#ArchLinux-使用记录" class="headerlink" title="ArchLinux 使用记录"></a>ArchLinux 使用记录</h1><h2 id="零"><a href="#零" class="headerlink" title="零"></a>零</h2><p>强烈推荐阅读：<a href="https://archlinuxstudio.github.io/ArchLinuxTutorial/#/?id=arch-linux-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B-archtutorial-arch-linux-studio">Arch Linux 安装使用教程</a> 和 <a href="https://archlinuxstudio.github.io/ArchLinuxTutorial/#/?id=arch-linux-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B-archtutorial-arch-linux-studio">archlinux 简明指南</a> 。 这两本书都是内容非常详尽的 Arch Linux 安装和使用教程，包括Arch Linux安装、基本配置、日产使用、常用软件安装等内容，可以帮助初学者解决很多问题。 </p>
-<p>笔者本人使用笔记本单固态应硬盘安装windows10 + ArchLinux双系统，推荐按照 <a href="https://archlinuxstudio.github.io/ArchLinuxTutorial/#/?id=arch-linux-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B-archtutorial-arch-linux-studio">archlinux 简明指南</a> 的安装步骤进行安装。</p>
-<p>安装过程需要注意：</p>
-<ol>
-<li><p>清楚你即将使用的命令做了什么，不要一味回车回车…</p>
-</li>
-<li><p>按照教程的大纲，分模块进行，分清每一块做了什么，不要一行一行，遇见一个敲一个，先通读知晓这一块是做什么之后，返回来按照自己需要的去做。</p>
-</li>
-<li><p>不要过分地“多线程”操作试图节省时间，稳中前进，不出错就是最快的。</p>
-</li>
-<li><p>仔细对照好输入的命令是否正确，确认每个命令的结果是否符合预期。</p>
-<p> <a href="https://bbs.archlinuxcn.org/index.php">Arclinux 中文论坛</a> 众多 Archlinux 使用者汇集的地方，同时有着较为官方的信息和软件包，很多问题可以在这里解决。</p>
-</li>
-</ol>
-<h2 id="部分命令记录"><a href="#部分命令记录" class="headerlink" title="部分命令记录"></a>部分命令记录</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> fdisk -l   <span class="comment"># 查看磁盘和分区信息</span></span><br><span class="line">df-h <span class="comment"># 显示文件系统磁盘空间使用情况</span></span><br><span class="line"><span class="built_in">sudo</span> umount /dev/sdX <span class="comment"># 卸载U盘，“/dev/sdX”为你要卸载的U盘设备名称。</span></span><br><span class="line"><span class="built_in">sudo</span> mkfs.vfat /dev/sdX <span class="comment"># 将U盘格式化为FAT32文件系统/</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printenv</span> <span class="comment"># 查看所有的环境变量</span></span><br><span class="line"><span class="built_in">echo</span> &amp;PATH <span class="comment"># 查看特定环境变量的值（echo $http_proxy）</span></span><br><span class="line"><span class="built_in">export</span> http_proxy=<span class="string">&quot;http://127.0.0.1:7890&quot;</span>   <span class="comment"># 设置代理服务器，设置http_proxy和https_proxy环境变量</span></span><br><span class="line"><span class="built_in">export</span> https_proxy=<span class="string">&quot;http://127.0.0.1:7890&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>以下命令需要安装后才能使用：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tree -A 使用ASNI绘图字符显示树状图而非以ASCII字符组合</span><br><span class="line">     -C 使用颜色区分文件类型</span><br><span class="line">     -N 支持显示中文字符</span><br><span class="line">     -a 显示隐藏文件(以.开头)</span><br><span class="line">     -d 只显示目录</span><br><span class="line">     -h 使用人易读的单位显示文件大小</span><br><span class="line">     -L [num] 指定显示的最大深度</span><br></pre></td></tr></table></figure>
-
-<p>##Pacman包管理：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -Syu                <span class="comment"># 升级系统</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -S package_name     <span class="comment"># 安装软件包</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -Syu package_name   <span class="comment"># 升级系统并安装软件包，ArchLinux 不支持部分升级，建议用此命令先升级再安装</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -Syyu               <span class="comment"># 升级系统 yy标记强制刷新 u标记升级动作</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -Ss package_name    <span class="comment"># 搜索包含相关内容的软件包</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -R package_name     <span class="comment"># 删除软件包</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -Qi package_name    <span class="comment"># 查看软件包信息     </span></span><br><span class="line"><span class="built_in">sudo</span> pacman -Q                  <span class="comment"># 查看安装的软件包      </span></span><br><span class="line"><span class="built_in">sudo</span> pacman -Rs package_name    <span class="comment"># 删除软件包，及其所有没有被其他已安装软件包使用的依赖包</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -Si package_name    <span class="comment"># 从数据库中搜索软件包的信息</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -Qdt                <span class="comment"># 找出孤立包 Q为查询本地软件包数据库 d标记依赖包 t标记不需要的包 dt合并标记孤立包</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -Rs $(pacman -Qtdq) <span class="comment"># 删除孤立软件包</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -U abc.pkg.tar.gz   <span class="comment"># 安装下载的abc包，或新编译的本地abc包</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -Fy                 <span class="comment"># 更新命令查询文件列表数据库</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -F xxx              <span class="comment"># 当不知道某个命令属于哪个包时，用来查询某个xxx命令属于哪个包</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -Sc                 <span class="comment"># 清理没有安装的所有缓存包，和没有被使用的同步数据库</span></span><br><span class="line"></span><br><span class="line">yay -Syu                        <span class="comment"># 升级官方和 AUR 的软件包, 包括pacman, -syyu强制升级</span></span><br><span class="line">yay -S abc                      <span class="comment"># 安装abc包</span></span><br><span class="line">yay -Ss abc | grep 已安装        <span class="comment"># 搜索已安装且包含abc的包</span></span><br><span class="line">yay -R 包名                      <span class="comment"># 删除软件包(不包括前后缀，版本号)</span></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">rm</span> /var/lib/pacman/db.lck  <span class="comment"># 删除/var/lib/pacman/db.lck锁</span></span><br></pre></td></tr></table></figure>
-<h2 id="系统服务的操作与介绍"><a href="#系统服务的操作与介绍" class="headerlink" title="系统服务的操作与介绍"></a>系统服务的操作与介绍</h2><p>Linux 系统中运行着各种服务，你需要掌握查询，变更服务状态的方式。同时对创建服务最好也有大致的了解。这里讲述命令<code>systemctl</code>的用法。以 dhcpcd 为例</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl start dhcpcd          <span class="comment"># 启动服务</span></span><br><span class="line">systemctl stop dhcpcd           <span class="comment"># 停止服务</span></span><br><span class="line">systemctl restart dhcpcd        <span class="comment"># 重启服务</span></span><br><span class="line">systemctl reload dhcpcd         <span class="comment"># 重新加载服务以及它的配置文件</span></span><br><span class="line">systemctl status dhcpcd         <span class="comment"># 查看服务状态</span></span><br><span class="line">systemctl <span class="built_in">enable</span> dhcpcd         <span class="comment"># 设置开机启动服务</span></span><br><span class="line">systemctl <span class="built_in">enable</span> --now dhcpcd   <span class="comment"># 设置服务为开机启动并立即启动这个单元:</span></span><br><span class="line">systemctl <span class="built_in">disable</span> dhcpcd        <span class="comment"># 取消开机自动启动</span></span><br><span class="line">systemctl daemon-reload dhcpcd  <span class="comment"># 重新载入 systemd 配置 扫描新增或变更的服务单元 不会重新加载变更的配置 加载变更的配置用 reload</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="换源-阿里云"><a href="#换源-阿里云" class="headerlink" title="换源-阿里云"></a>换源-阿里云</h2><p>编辑文件<code>/etc/pacman.d/mirrorlist</code>：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vim /etc/pacman.d/mirrorlist</span><br></pre></td></tr></table></figure>
-<p>在镜像源列表最顶端添加：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Server = http://mirrors.aliyun.com/archlinux/<span class="variable">$repo</span>/os/<span class="variable">$arch</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>参考：<a href="https://developer.aliyun.com/mirror/archlinuxcn?spm=a2c6h.13651102.0.0.3e221b11Nc8UpY">阿里云开发者社区&gt; 镜像站&gt; archlinuxcn</a></p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -Syy &amp;&amp; <span class="built_in">sudo</span> pacman -S archlinuxcn-keyring <span class="comment"># 安装 archlinuxcn-keyring 包导入GPG key</span></span><br></pre></td></tr></table></figure>
-<h2 id="安装yay"><a href="#安装yay" class="headerlink" title="安装yay"></a>安装yay</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S yay</span><br><span class="line"><span class="comment">#安装完成后再次更新</span></span><br><span class="line">yay -Syyu &amp;&amp; yay -Sys</span><br></pre></td></tr></table></figure>
-<h2 id="设置某个命令不再需要-sudo-输入密码"><a href="#设置某个命令不再需要-sudo-输入密码" class="headerlink" title="设置某个命令不再需要 sudo 输入密码"></a>设置某个命令不再需要 sudo 输入密码</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vim /etc/sudoers <span class="comment"># 编辑配置文件</span></span><br><span class="line"><span class="comment"># 在合适的行添加以下内容，username 是你的用户名，注意使用完整路径，不然每次都会提醒，不同命令用&quot;,&quot;隔开</span></span><br><span class="line">username ALL=(ALL) NOPASSWD: /usr/sbin/systemctl，/ust/sbin/pacman</span><br><span class="line"><span class="comment"># 使用which命令可以查看程序的完整路径。</span></span><br><span class="line"><span class="built_in">which</span> yay</span><br><span class="line"><span class="built_in">which</span> pacman</span><br><span class="line"><span class="comment"># 一键为当前用户设置免 sudo 权限，当前用户所有命令都不在需要sudo输入密码</span></span><br><span class="line"><span class="built_in">sudo</span> sh -c <span class="string">&quot;echo &#x27;<span class="variable">$USER</span> ALL = (ALL) NOPASSWD:ALL&#x27; &gt; /etc/sudoers.d/<span class="variable">$USER</span>&quot;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="常见问题及其解决"><a href="#常见问题及其解决" class="headerlink" title="常见问题及其解决"></a>常见问题及其解决</h2><ul>
-<li><p>使用yay命令时报错：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">搜索 AUR 时出错: response decoding failed: invalid character <span class="string">&#x27;&lt;&#x27;</span> looking <span class="keyword">for</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>解决：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yay --aururl <span class="string">&quot;https://aur.archlinux.org&quot;</span> --save</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>Telegram无法登陆：</p>
-<ul>
-<li>解决：<br>SETTING中添加地址，使用代理，port选择代理所使用端口号。</li>
-</ul>
-</li>
-<li><p>连接显示器无法使用：</p>
-<ul>
-<li>解决：<br>根据<a href="https://archlinuxstudio.github.io/ArchLinuxTutorial/#/">Linux 安装使用教程</a>中<strong>显卡驱动</strong>所描述进行即可。</li>
-</ul>
-</li>
-<li><p>VSCode无法唤出外部终端：</p>
-<ul>
-<li>解决：<br><code>.vscode</code>文件中设置启用外部终端，在<code>settings.json</code>文件中加入”terminal.external.linuxExec”: “&#x2F;usr&#x2F;bin&#x2F;konsole”, “”内指要调用的终端bin&#x2F;konsole。</li>
-</ul>
-</li>
-<li><p>在升级系统（syu）时，出现以下内容：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">错误：python-markdown: 来自 <span class="string">&quot;Caleb Maclennan &lt;alerque@archlinux.org&gt;&quot;</span> 的签名是勉强信任的</span><br><span class="line">:: 文件 /var/cache/pacman/pkg/python-markdown-3.3.6-1-any.pkg.tar.zst 已损坏 (无效或已损坏的软件包 (PGP 签名)).</span><br><span class="line">打算删除吗？ [Y/n] </span><br><span class="line">错误：trash-cli: 来自 <span class="string">&quot;Alexander Epaneshnikov &lt;alex19ep@archlinux.org&gt;&quot;</span> 的签名是勉强信任的</span><br><span class="line">:: 文件 /var/cache/pacman/pkg/trash-cli-0.21.10.24-1-any.pkg.tar.zst 已损坏 (无效或已损坏的软件包 (PGP 签名)).</span><br><span class="line">打算删除吗？ [Y/n] </span><br><span class="line">错误：无法提交处理 (无效或已损坏的软件包)</span><br><span class="line">发生错误，没有软件包被更新。</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>解决：</p>
-<p>终端输入：<code>sudo pacman-key --init &amp;&amp; sudo pacman-key --populate &amp;&amp; sudo pacman -Syyu</code></p>
-<p>可能的方法：<code>sudo pacman -S archlinux-keyring</code></p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="使用Docker"><a href="#使用Docker" class="headerlink" title="使用Docker"></a>使用Docker</h2><ol>
-<li><p>安装：</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S docker <span class="comment"># 安装Docker -Ss搜索Docker软件包</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> docker.service <span class="comment"># 开启Docker开机自启动服务</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl start docker.service  <span class="comment"># 启动Docker服务</span></span><br><span class="line"><span class="comment"># 安装好docker后自动建立了docker组，不需要自己添加docker组，只需要把当前工作用户加入docker组即可</span></span><br><span class="line"><span class="built_in">sudo</span> gpasswd -a <span class="variable">$USER</span> docker <span class="comment"># 把工作用户加入Docker组，避免使用root账号工作</span></span><br><span class="line"><span class="comment">#重启系统生效</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">disable</span> docker.service <span class="comment"># 关闭开机自启动服务</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>获取镜像：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull archlinux  <span class="comment"># 下载镜像</span></span><br><span class="line">docker image <span class="built_in">ls</span>        <span class="comment"># 列出镜像列表</span></span><br><span class="line">docker ps -a           <span class="comment"># 列出容器列表</span></span><br><span class="line">docker run -it archlinux /bin/bash       <span class="comment"># 用所给镜像启动一个新的容器</span></span><br><span class="line">docker run --<span class="built_in">rm</span> -it --net=host gpt-academic <span class="comment"># 用所给镜像启动一个新的容器</span></span><br><span class="line">docker <span class="built_in">exec</span> -it &lt;CONTAINER_NAME&gt; bash    <span class="comment"># 进入一个正在运行的docker(在容器内部创建一个子进程)</span></span><br><span class="line">docker stop [contaionerID]               <span class="comment"># 终止镜像</span></span><br><span class="line">docker rmi $(docker images -q)           <span class="comment"># 删除所有镜像</span></span><br><span class="line">docker stop $(docker ps -aq)             <span class="comment"># 停止所有容器</span></span><br><span class="line">docker container <span class="built_in">rm</span> [contaionerID]       <span class="comment"># 删除一个处于终止状态的容器</span></span><br><span class="line">docker container <span class="built_in">rm</span> $(docker images -q)  <span class="comment"># 删除所有容器</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置镜像：</p>
-<p>启动镜像，配置初始开发环境，安装了一些包（可能有些没有用），</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -t -i archlinux /bin/bash <span class="comment"># 启动镜像</span></span><br><span class="line"><span class="comment"># 在docker内输入以下内容</span></span><br><span class="line">sed -i <span class="string">&#x27;1i Server = http://mirrors.aliyun.com/archlinux/$repo/os/$arch&#x27;</span> /etc/pacman.d/mirrorlist \</span><br><span class="line">    &amp;&amp; sed -i <span class="string">&#x27;1i Server = https://mirrors.tencent.com/archlinux/$repo/os/$arch&#x27;</span> /etc/pacman.d/mirrorlist \</span><br><span class="line">    &amp;&amp; sed -i <span class="string">&#x27;$i [archlinuxcn]&#x27;</span> /etc/pacman.conf \</span><br><span class="line">    &amp;&amp; sed -i <span class="string">&#x27;$i SigLevel = TrustAll&#x27;</span> /etc/pacman.conf \</span><br><span class="line">    &amp;&amp; sed -i <span class="string">&#x27;$i Server = https://repo.archlinuxcn.org/$arch&#x27;</span> /etc/pacman.conf \</span><br><span class="line">    &amp;&amp; sed -i -r <span class="string">&#x27;s/^NoExtract\s*=\s*.*/# \0/g&#x27;</span> /etc/pacman.conf \</span><br><span class="line">    &amp;&amp; pacman -Syyu --noconfirm \</span><br><span class="line">    &amp;&amp; pacman -Sy --noconfirm archlinuxcn-keyring &amp;&amp; pacman -Su --noconfirm\</span><br><span class="line">    &amp;&amp; pacman -Syy --noconfirm git vim neovim zsh oh-my-zsh-git jdk-openjdk jdk8-openjdk jdk11-openjdk \</span><br><span class="line">    maven yay zsh python3 go nodejs npm yarn tmux python2 zsh-autosuggestions zsh-syntax-highlighting \</span><br><span class="line">    zsh-theme-powerlevel10k ranger python-pip python-neovim wl-clipboard fzf ripgrep man-db \</span><br><span class="line">    gcc clang base-devel wqy-zenhei noto-fonts-cjk wget unzip thefuck \</span><br><span class="line">    &amp;&amp; <span class="built_in">ln</span> -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \</span><br><span class="line">    &amp;&amp; pacman -Scc --noconfirm \</span><br><span class="line">    &amp;&amp; <span class="built_in">rm</span> -rf /var/lib/pacman/sync/* /var/cache/pacman/pkg/* \</span><br><span class="line">    &amp;&amp; <span class="built_in">echo</span> <span class="string">&quot;&quot;</span> &gt; /var/log/pacman.log</span><br></pre></td></tr></table></figure>
-
-<p>精简版本：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i <span class="string">&#x27;1i Server = http://mirrors.aliyun.com/archlinux/$repo/os/$arch&#x27;</span> /etc/pacman.d/mirrorlist \</span><br><span class="line">    &amp;&amp; sed -i <span class="string">&#x27;1i Server = https://mirrors.tencent.com/archlinux/$repo/os/$arch&#x27;</span> /etc/pacman.d/mirrorlist \</span><br><span class="line">    &amp;&amp; sed -i <span class="string">&#x27;$i [archlinuxcn]&#x27;</span> /etc/pacman.conf \</span><br><span class="line">    &amp;&amp; sed -i <span class="string">&#x27;$i SigLevel = TrustAll&#x27;</span> /etc/pacman.conf \</span><br><span class="line">    &amp;&amp; sed -i <span class="string">&#x27;$i Server = https://repo.archlinuxcn.org/$arch&#x27;</span> /etc/pacman.conf \</span><br><span class="line">    &amp;&amp; sed -i -r <span class="string">&#x27;s/^NoExtract\s*=\s*.*/# \0/g&#x27;</span> /etc/pacman.conf \</span><br><span class="line">    &amp;&amp; pacman -Syyu --noconfirm \</span><br><span class="line">    &amp;&amp; pacman -Sy --noconfirm archlinuxcn-keyring &amp;&amp; pacman -Su --noconfirm\</span><br><span class="line">    &amp;&amp; pacman -Syy --noconfirm git vim neovim \</span><br><span class="line">    maven yay go npm yarn tmux \</span><br><span class="line">    ranger python-pip python-neovim wl-clipboard fzf ripgrep man-db \</span><br><span class="line">    gcc clang base-devel wqy-zenhei noto-fonts-cjk wget unzip thefuck \</span><br><span class="line">    &amp;&amp; <span class="built_in">ln</span> -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \</span><br><span class="line">    &amp;&amp; pacman -Scc --noconfirm \</span><br><span class="line">    &amp;&amp; <span class="built_in">rm</span> -rf /var/lib/pacman/sync/* /var/cache/pacman/pkg/* \</span><br><span class="line">    &amp;&amp; <span class="built_in">echo</span> <span class="string">&quot;&quot;</span> &gt; /var/log/pacman.log</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>配置vscode：</p>
-<p>下载插件：Remote Development Pack（包含Remote-Containers)，Docker。打开插件，在CONTAINERS中右键Attach Visual Studio Code，在vscode中运行了镜像，重新安装一些扩展，当作一个新的archlinux一样使用。</p>
-</li>
-<li><p>容器和本地间的文件传输：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker ps -a   <span class="comment"># 获得容器ID</span></span><br><span class="line">docker <span class="built_in">cp</span> 本地文件路径 ID全称:容器路径 <span class="comment"># 本地文件复制到容器</span></span><br><span class="line">docker <span class="built_in">cp</span> ID全称:容器文件路径 本地路径 <span class="comment"># 容器文件复制到本地</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="Typora-PicGo-Github图床"><a href="#Typora-PicGo-Github图床" class="headerlink" title="Typora+PicGo+Github图床"></a>Typora+PicGo+Github图床</h2><p>整体遵循：<a href="https://juejin.cn/post/6844904137407086600#heading-8">https://juejin.cn/post/6844904137407086600#heading-8</a></p>
-<ol>
-<li>创建GIthub仓库并创建Token并复制</li>
-<li>下载PicGo（app）并配置，包括时间戳命名，选择github图床，仓库名，分支用main，设定Token</li>
-<li>下载并配置node.js</li>
-<li>配置Typora并测试图床</li>
-</ol>
-<h3 id="编译安装从-GitHub-下载的源码"><a href="#编译安装从-GitHub-下载的源码" class="headerlink" title="编译安装从 GitHub 下载的源码"></a>编译安装从 GitHub 下载的源码</h3><ol>
-<li><p>执行以下命令，生成 Makefile 文件：</p>
-<p> <code>./autogen.sh</code> </p>
-</li>
-<li><p>如果下载的源代码中已经包含了 Makefile 文件，则可以跳过此步骤。</p>
-</li>
-<li><p>执行以下命令，配置编译选项：</p>
-<p><code>./configure</code> </p>
-<p>configure 脚本会检查系统环境和依赖库，并生成 Makefile 文件。可以通过指定不同的选项来定制编译过程。</p>
-<p>例如，可以使用 –prefix 选项指定安装目录，使用 –enable-shared 选项生成共享库等。</p>
-</li>
-<li><p>执行以下命令，开始编译： </p>
-<p> <code>make</code> </p>
-<p> 这个命令会编译源代码，并生成可执行文件或共享库等。 </p>
-</li>
-<li><p>执行以下命令，安装编译好的文件：</p>
-</li>
-<li><p><code>sudo make install</code> </p>
-<p>这个命令会将编译好的文件安装到系统中，通常是 &#x2F;usr&#x2F;local 目录。 如果在执行 configure 或 make 命令时遇到了错误，可以根据错误信息进行调整。通常情况下，错误信息会提示缺少依赖库或者系统环境不兼容等问题。</p>
-</li>
-</ol>
-<h2 id="安装deb包"><a href="#安装deb包" class="headerlink" title="安装deb包"></a>安装deb包</h2><ol>
-<li>使用yay安装debtap。 <code>yay -S debtap</code></li>
-<li>升级的debtap。<code>sudo debtap -U</code></li>
-<li>转换deb包，生成一个<code>yourfile.zst</code>文件。<code>sudo debtap yourfile.deb</code>（接两次回车）</li>
-<li>安装转换后的包。<code>sudo pacman -U yourfile.zst</code></li>
-</ol>
-<h2 id="压缩文件"><a href="#压缩文件" class="headerlink" title="压缩文件"></a>压缩文件</h2><ul>
-<li><code>-c</code> ：生成一个新的归档文件</li>
-<li><code>-f</code> ：输出到文件中，</li>
-<li><code>-z</code> &amp; <code>-j</code> ：将 tar 压缩成 gzip 和 bzip2 格式。</li>
-<li><code>archive</code> ：压缩文件的名称</li>
-<li><code>/path/to/folder</code> ：要压缩的文件夹的路径。<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将文件夹压缩成 .tar 文件:</span></span><br><span class="line">copy codetar -cf archive.tar /path/to/folder</span><br><span class="line"><span class="comment"># 将文件夹压缩成 .tar.gz 文件:</span></span><br><span class="line">copy codetar -czf archive.tar.gz /path/to/folder</span><br><span class="line"><span class="comment"># 将文件夹压缩成 .tar.bz2 文件:</span></span><br><span class="line">copy codetar -cjf archive.tar.bz2 /path/to/folder</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="安装QQ"><a href="#安装QQ" class="headerlink" title="安装QQ"></a>安装QQ</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yay -Ss linuxqq <span class="comment"># 在AUR查找linuxQQ </span></span><br><span class="line">yay -S linuxqq  <span class="comment"># 从AUR安装linuxqq</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -Rns linuxqq <span class="comment"># 删除linuxqq及不再需要的依赖</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="登陆后闪退的可能解决办法："><a href="#登陆后闪退的可能解决办法：" class="headerlink" title="登陆后闪退的可能解决办法："></a>登陆后闪退的可能解决办法：</h3><p>删除<code>~/.config/QQ</code> 下的所有文件，重启QQ进行登陆并在设置里关闭QQ自己的更新。</p>
-<p>其他问题请自行在Google或者在<a href="https://bbs.archlinuxcn.org/index.php">Arch中文社区</a>寻找解决方案</p>
-<h2 id="安装-fcitx5及中文输入法"><a href="#安装-fcitx5及中文输入法" class="headerlink" title="安装 fcitx5及中文输入法"></a>安装 fcitx5及中文输入法</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S fcitx5-im </span><br><span class="line"><span class="built_in">sudo</span> pacman -S fcitx5-chinese-addons  fcitx5-rime</span><br></pre></td></tr></table></figure>
-
-<p><code>sudo vim /etc/environment</code>，添加如下内容，之后重启输入法：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GTK_IM_MODULE=fcitx</span><br><span class="line">QT_IM_MODULE=fcitx</span><br><span class="line">XMODIFIERS=@im=fcitx</span><br><span class="line">SDL_IM_MODULE=fcitx</span><br></pre></td></tr></table></figure>
-
-<p>在设置中找到输入法，添加输入法，选拼音</p>
-<h3 id="中文标点消失："><a href="#中文标点消失：" class="headerlink" title="中文标点消失："></a>中文标点消失：</h3><ul>
-<li><p>编辑~&#x2F;.config&#x2F;fcitx&#x2F;data&#x2F;punc.mb.zh_CN，自行查找</p>
-</li>
-<li><p>[ctrl+.]</p>
-</li>
-</ul>
-<h2 id="安装zsh"><a href="#安装zsh" class="headerlink" title="安装zsh"></a>安装zsh</h2><h3 id="编辑配置文件"><a href="#编辑配置文件" class="headerlink" title="编辑配置文件:"></a>编辑配置文件:</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim ~/.zshrc</span><br></pre></td></tr></table></figure>
-
-<p>目前的:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">if</span> [[ -r <span class="string">&quot;<span class="variable">$&#123;XDG_CACHE_HOME:-<span class="variable">$HOME</span>/.cache&#125;</span>/p12k-instant-prompt-<span class="variable">$&#123;(%):-%n&#125;</span>.zsh&quot;</span> ]]; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">source</span> <span class="string">&quot;<span class="variable">$&#123;XDG_CACHE_HOME:-<span class="variable">$HOME</span>/.cache&#125;</span>/p11k-instant-prompt-<span class="variable">$&#123;(%):-%n&#125;</span>.zsh&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ZSH=/usr/share/oh-my-zsh/</span><br><span class="line"></span><br><span class="line">ZSH_THEME=<span class="string">&quot;powerlevel10k/powerlevel10k&quot;</span></span><br><span class="line"></span><br><span class="line">plugins=(</span><br><span class="line">	<span class="built_in">sudo</span></span><br><span class="line">	git</span><br><span class="line">	autojump</span><br><span class="line">	zsh-syntax-highlighting</span><br><span class="line">	zsh-autosuggestions</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">ZSH_CACHE_DIR=<span class="variable">$HOME</span>/.cache/oh-my-zsh</span><br><span class="line"><span class="keyword">if</span> [[ ! -d <span class="variable">$ZSH_CACHE_DIR</span> ]]; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">mkdir</span> <span class="variable">$ZSH_CACHE_DIR</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> <span class="variable">$ZSH</span>/oh-my-zsh.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.</span></span><br><span class="line">[[ ! -f ~/.p10k.zsh ]] || <span class="built_in">source</span> ~/.p10k.zsh</span><br><span class="line"><span class="comment"># other name</span></span><br><span class="line"><span class="built_in">alias</span> sp=<span class="string">&#x27;sudo pacman&#x27;</span> </span><br><span class="line"><span class="built_in">alias</span> syyu=<span class="string">&#x27;yay -Syyu&#x27;</span> <span class="comment"># 强制升级系统和软件包</span></span><br><span class="line"><span class="built_in">alias</span> syu=<span class="string">&#x27;yay -Syu&#x27;</span>   <span class="comment"># 升级系统和软件包</span></span><br><span class="line"><span class="built_in">alias</span> c=<span class="string">&#x27;clear&#x27;</span> <span class="comment"># 清屏</span></span><br><span class="line"><span class="built_in">alias</span> e=<span class="string">&#x27;exit&#x27;</span>  <span class="comment"># 退出终端</span></span><br><span class="line"><span class="built_in">alias</span> qq=<span class="string">&#x27;rm -rf ~/.config/QQ/ &amp;&amp; linuxqq &amp;&#x27;</span> <span class="comment"># 启动QQ时删除文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># git快捷键 cd+add+commit+push+cd</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将本地Note仓库提交到gihub</span></span><br><span class="line"><span class="built_in">alias</span> gpn=<span class="string">&#x27;cd /home/origin/Code/repository/Note &amp;&amp; git add . &amp;&amp; git commit -m \&quot;update\&quot; &amp;&amp; git push &amp;&amp; cd -&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将本地Code_c仓库提交到gihub</span></span><br><span class="line"><span class="built_in">alias</span> gpc=<span class="string">&#x27;cd /home/origin/Code/repository/Code_c &amp;&amp; git add . &amp;&amp; git commit -m \&quot;update\&quot; &amp;&amp; git push &amp;&amp; cd -&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将本地Code_cc仓库提交到gihub</span></span><br><span class="line"><span class="built_in">alias</span> gpcc=<span class="string">&#x27;cd /home/origin/Code/repository/Code_cc &amp;&amp; git add . &amp;&amp; git commit -m \&quot;update\&quot; &amp;&amp; git push &amp;&amp; cd -&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将本地Python仓库提交到gihub</span></span><br><span class="line"><span class="built_in">alias</span> gppy=<span class="string">&#x27;cd /home/origin/Code/repository/Code_py &amp;&amp; git add . &amp;&amp; git commit -m \&quot;update\&quot; &amp;&amp; git push &amp;&amp; cd -&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将本地my-xv6-labs-2022仓库提交到gihub</span></span><br><span class="line"><span class="built_in">alias</span> gplab=<span class="string">&#x27;cd /home/origin/Code/repository/my-xv6-labs-2022 &amp;&amp; git add . &amp;&amp; git commit -m \&quot;update\&quot; &amp;&amp; git push &amp;&amp;cd -&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> GOPATH=<span class="string">&quot;<span class="variable">$HOME</span>/go&quot;</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="string">&quot;<span class="variable">$PATH</span>:/usr/lib/go/bin:<span class="variable">$GOPATH</span>/bin&quot;</span></span><br><span class="line"><span class="built_in">export</span> PATH=/usr/sbin:<span class="variable">$PATH</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>##为一个文件或目录创建一个符号链接：</p>
-<p>在<code>/usr/local/local</code>中存有已经建立的符号链接，在<code>/usr/share</code>中有通过自行下载的装包安装的软件，如通过官网安装包安装的code。</p>
-<p>输入<code>ln -s [文件/目录路径] [建立后的软链接名称]</code>，即可建立链接。如：<code>ln -s /usr/share/code/code code</code></p>
-<h2 id="更改默认Jva环境"><a href="#更改默认Jva环境" class="headerlink" title="更改默认Jva环境"></a>更改默认Jva环境</h2><h3 id="安装Java环境（Java-20-jdk）"><a href="#安装Java环境（Java-20-jdk）" class="headerlink" title="安装Java环境（Java-20-jdk）"></a>安装Java环境（Java-20-jdk）</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -Sy --needed --noconfirm jdk</span><br></pre></td></tr></table></figure>
-
-<p>输入</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">archlinux-java status</span><br></pre></td></tr></table></figure>
-
-<p>若出现类似下面，即为安装成功</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Available Java environments:</span><br><span class="line">  java-21-jdk</span><br><span class="line">  java-21-openjdk</span><br><span class="line">  java-8-openjdk (default)</span><br></pre></td></tr></table></figure>
-
-<p>若 java-21-openjdk 为 default 则已成功将 java21 设置为默认环境，若不是，则输入</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> archlinux-java <span class="built_in">set</span> java-20-openjdk[你想要设为默认的java环境名]</span><br></pre></td></tr></table></figure>
-
-<p>后输入<code>archlinux-java status</code>查看， java-21-openjdk 已是 default</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Available Java environments:</span><br><span class="line">  java-21-jdk</span><br><span class="line">  java-21-openjdk (default)</span><br><span class="line">  java-8-openjdk</span><br></pre></td></tr></table></figure>
-
-<h2 id="ArchLinux内存管理"><a href="#ArchLinux内存管理" class="headerlink" title="ArchLinux内存管理"></a>ArchLinux内存管理</h2><ol>
-<li><p>清除 Arch Linux 上的包缓存和AUR 软件包</p>
-<p> 在<code>/var/cache/pacman/pkg/</code>目录中存有下载的每个软件包；</p>
-<p> 在<code>/home/Yuanmxc/.cache/yay</code>存有从 AUR 下载的软件包。</p>
-<p> 这些软件包包括升级前的旧包，如果更新破坏了软件包，便于回滚到以前的版本。</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 删除当前上面两个文件中未安装的所有软件包</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -Sc</span><br><span class="line">yay -Sc</span><br><span class="line"><span class="comment"># -cc 标志删除所有缓存的包</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -Scc</span><br><span class="line">yay -Scc</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>删除孤立的软件包</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -Qtdq 查看删除孤立的软件包</span><br><span class="line"><span class="built_in">sudo</span> pacman -Rns $(pacman -Qtdq)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>清理日志，设置了固定大小为50M，多的日志会被删掉。</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> journalctl --vacuum-size=50M</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="python-使用-pip-遇到问题"><a href="#python-使用-pip-遇到问题" class="headerlink" title="python 使用 pip 遇到问题"></a>python 使用 pip 遇到问题</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">pip install scikit-learn</span><br><span class="line">error: externally-managed-environment</span><br><span class="line"></span><br><span class="line">× This environment is externally managed</span><br><span class="line">╰─&gt; To install Python packages system-wide, try <span class="string">&#x27;pacman -S</span></span><br><span class="line"><span class="string">    python-xyz&#x27;</span>, <span class="built_in">where</span> xyz is the package you are trying to</span><br><span class="line">    install.</span><br><span class="line">    </span><br><span class="line">    If you wish to install a non-Arch-packaged Python package,</span><br><span class="line">    create a virtual environment using <span class="string">&#x27;python -m venv path/to/venv&#x27;</span>.</span><br><span class="line">    Then use path/to/venv/bin/python and path/to/venv/bin/pip.</span><br><span class="line">    </span><br><span class="line">    If you wish to install a non-Arch packaged Python application,</span><br><span class="line">    it may be easiest to use <span class="string">&#x27;pipx install xyz&#x27;</span>, <span class="built_in">which</span> will manage a</span><br><span class="line">    virtual environment <span class="keyword">for</span> you. Make sure you have python-pipx</span><br><span class="line">    installed via pacman.</span><br><span class="line"></span><br><span class="line">note: If you believe this is a mistake, please contact your Python installation or OS distribution provider. You can override this, at the risk of breaking your Python installation or OS, by passing --break-system-packages.</span><br><span class="line">hint: See PEP 668 <span class="keyword">for</span> the detailed specification.</span><br></pre></td></tr></table></figure>
-
-<p>解决：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">rm</span> /usr/lib/python3.12/EXTERNALLY-MANAGED <span class="comment"># python路径和版本要与系统中的相对应</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="修改用户名及用户目录"><a href="#修改用户名及用户目录" class="headerlink" title="修改用户名及用户目录"></a>修改用户名及用户目录</h2><ol>
-<li>切换终端，用root账户登录; </li>
-<li>编辑&#x2F;etc&#x2F;passwd文件，将旧用户名替换为新用户名; </li>
-<li>编辑&#x2F;etc&#x2F;shadow文件，将旧用户名替换为新用户名；</li>
-<li>编辑&#x2F;etc&#x2F;group文件，将旧用户名替换为新用户名；</li>
-<li>重命名home文件： mv &#x2F;home&#x2F;oldusername &#x2F;home&#x2F;newusername</li>
-</ol>
-<p> 注：目录名的改变会导致一些固定路径的配置项发生错误，需要手动修改路径。</p>
-<h2 id="Linux-修改U盘名称"><a href="#Linux-修改U盘名称" class="headerlink" title="Linux 修改U盘名称"></a>Linux 修改U盘名称</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S mtools <span class="comment"># 安装工具</span></span><br><span class="line"><span class="built_in">sudo</span> vim /etc/mtools.conf <span class="comment"># 然后修改配置文件</span></span><br><span class="line"><span class="comment"># 在这个文件最后添加下面一行</span></span><br><span class="line">mtools_skip_check=1</span><br><span class="line"><span class="built_in">sudo</span> mlabel -i /dev/sdb1 ::DISK2 <span class="comment"># sdb1是U盘，SISK2是修改后的名称（自动改大写）</span></span><br><span class="line"><span class="built_in">sudo</span> eject /dev/sdb1      <span class="comment"># 修改完成</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="安装使用-valgrind-检测内存泄露"><a href="#安装使用-valgrind-检测内存泄露" class="headerlink" title="安装使用 valgrind 检测内存泄露"></a>安装使用 valgrind 检测内存泄露</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S valgrind</span><br><span class="line">pacman -S debuginfod</span><br><span class="line">pacman -S glibc</span><br><span class="line"></span><br><span class="line">valgrind --leak-check=full ./your_program</span><br></pre></td></tr></table></figure>
-
-<h2 id="syu升级软件包出现错误："><a href="#syu升级软件包出现错误：" class="headerlink" title="syu升级软件包出现错误："></a>syu升级软件包出现错误：</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">google-chrome: 文件系统中已存在 /opt/google/chrome/CHROME_VERSION_EXTRA </span><br><span class="line">google-chrome: 文件系统中已存在 /opt/google/chrome/MEIPreload/manifest.json </span><br><span class="line">google-chrome: 文件系统中已存在 /opt/google/chrome/MEIPreload/preloaded_data.pb </span><br><span class="line"></span><br><span class="line">（多行类似,在<span class="string">&quot;/opt/google/chrome/&quot;</span>下）</span><br><span class="line"></span><br><span class="line">google-chrome: 文件系统中已存在 /usr/share/doc/google-chrome-stable/changelog.gz </span><br><span class="line">google-chrome: 文件系统中已存在 /usr/share/gnome-control-center/default-apps/google-chrome.xml </span><br><span class="line">google-chrome: 文件系统中已存在 /usr/share/icons/hicolor/128x128/apps/google-chrome.png </span><br><span class="line">google-chrome: 文件系统中已存在 </span><br><span class="line"></span><br><span class="line">（多行类似,在<span class="string">&quot;/usr/share&quot;</span>下）</span><br><span class="line"></span><br><span class="line">发生错误，没有软件包被更新。</span><br><span class="line"> -&gt; 安装时出错:  [/home/Yuanmxc/.cache/yay/google-chrome/google-chrome-124.0.6367.201-1-x86_64.pkg.tar.zst] - <span class="built_in">exit</span> status 1</span><br></pre></td></tr></table></figure>
-
-<p>解决：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yay -S google-chrome --overwrite=<span class="string">&#x27;/opt/*&#x27;</span> --overwrite=<span class="string">&#x27;/usr/*&#x27;</span></span><br><span class="line"><span class="comment"># 安装时覆盖这两个目录下与 Google Chrome 相关的文件</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="手动编译安装一些软件包，依赖库"><a href="#手动编译安装一些软件包，依赖库" class="headerlink" title="手动编译安装一些软件包，依赖库"></a>手动编译安装一些软件包，依赖库</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S base-devel <span class="comment"># 安装必要编译工具和依赖项，已安装不用再安装</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/sctplab/usrsctp.git <span class="comment"># 克隆源码</span></span><br><span class="line"><span class="comment"># 进入目目录编译安装</span></span><br><span class="line"><span class="built_in">cd</span> usrsctp</span><br><span class="line">./bootstrap</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line"><span class="built_in">sudo</span> make install</span><br><span class="line"><span class="comment"># 安装完后可以删除源码</span></span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line"><span class="built_in">rm</span> -rf usrsctp</span><br></pre></td></tr></table></figure>
-
-<h2 id="KDE-显示相关"><a href="#KDE-显示相关" class="headerlink" title="KDE 显示相关"></a>KDE 显示相关</h2><p>安装 optimus-manager（<a href="https://github.com/Askannz/optimus-manager">AUR</a> &amp; <a href="https://github.com/Askannz/optimus-manager">GIthub</a>） 及 optimus-manager-qt 来进行 GPU 管理，适合 AMD+Nvida 独显用户，主要是便于连接显示器和显卡切换，方案参考来自 <a href="https://archlinuxstudio.github.io/ArchLinuxTutorial/#/rookie/graphic_driver?id=%e6%98%be%e5%8d%a1%e9%a9%b1%e5%8a%a8">archlinuxstudio的显卡驱动部分</a>。</p>
-<p>部分可能用到的命令。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /sys/bus/pci/devices/0000\:01\:00.0/power/runtime_status <span class="comment"># 查看 Nvida 是否active</span></span><br><span class="line">nvidia-smi <span class="comment"># 查看Nvida 显卡状态</span></span><br></pre></td></tr></table></figure>
-
-<p>从530.41驱动版本开始，出现了卡被锁定在低功耗限制的情况（参见GitHub问题483）。 NVIDIA 驱动程序已禁用使用 <code>nvidia-smi</code> 命令手动设置功率限制的功能，因此许多笔记本电脑陷入低功耗和性能不佳的困境。</p>
-<p>要解决此问题（对于 Ampere 一代或更新版本），请启动&#x2F;启用 <code>nvidia-powerd.service</code> ，这将启用 DynamicBoost。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl status nvidia-powerd.service <span class="comment"># 查看状态</span></span><br><span class="line">systemctl start nvidia-powerd.service <span class="comment"># 启用</span></span><br><span class="line">systemctl stop nvidia-powerd.service <span class="comment"># 停用</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="查看磁盘信息"><a href="#查看磁盘信息" class="headerlink" title="查看磁盘信息"></a>查看磁盘信息</h4><p>也可使用 <code>fdisk -l</code> 等命令进行查看，这里采用 <code>lsblk</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">lsblk</span><br></pre></td></tr></table></figure>
-
-<p>假设U盘为 sdc</p>
-<h3 id="卸载设备"><a href="#卸载设备" class="headerlink" title="卸载设备"></a>卸载设备</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 卸载 sdc </span></span><br><span class="line"><span class="built_in">sudo</span> umount /dev/sdc*</span><br></pre></td></tr></table></figure>
-
-<h3 id="格式化成功后，再次查看磁盘信息时，上面提到的3个分区就不存在了"><a href="#格式化成功后，再次查看磁盘信息时，上面提到的3个分区就不存在了" class="headerlink" title="格式化成功后，再次查看磁盘信息时，上面提到的3个分区就不存在了"></a>格式化成功后，再次查看磁盘信息时，上面提到的3个分区就不存在了</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 格式化成功后，再次查看磁盘信息时，上面提到的3个分区就不存在了</span></span><br><span class="line"><span class="built_in">sudo</span> mkfs.vfat /dev/sdc -I</span><br></pre></td></tr></table></figure>
-
-<h4 id="制作系统启动盘"><a href="#制作系统启动盘" class="headerlink" title="制作系统启动盘"></a>制作系统启动盘</h4><p>采用 <code>dd</code> 命令将系统镜像写入U盘。执行完毕后，<code>Ubuntu</code> 系统启动盘就制作好了。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># if=镜像的路径, of=写入的磁盘, status=progress方便查看下进度</span></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">dd</span> bs=4M <span class="keyword">if</span>=ubuntu-20.04.2.0-desktop-amd64.iso of=/dev/sdc status=progress oflag=<span class="built_in">sync</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="使用ssh连接远程主机"><a href="#使用ssh连接远程主机" class="headerlink" title="使用ssh连接远程主机"></a>使用ssh连接远程主机</h2><p>在 Arch Linux 上，SSH 客户端是 OpenSSH 软件包的一部分：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -Syu</span><br><span class="line"><span class="built_in">sudo</span> pacman -S openssh</span><br></pre></td></tr></table></figure>
-
-<p>生成一对新的ssh密钥：</p>
-<p>在终端中，使用以下命令生成一对新的 SSH 密钥：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>这将在 <code>~/.ssh/</code> 目录下生成一个 RSA 4096 位的密钥对。私钥为<code>id_rsa</code>，公钥为<code>id_rsa.pub</code></p>
-<p>编辑 <code>~/.ssh/config</code> 文件以便快速方便地连接多个主机：</p>
-<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">Host myserver</span><br><span class="line">    HostName example.com</span><br><span class="line">    User username</span><br><span class="line">    Port 22</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
-
-<p>这样你可以通过 <code>ssh myserver</code> 来连接，而不需要每次都输入完整的命令。</p>
-<h2 id="安装并且切换不同版本的-java-环境："><a href="#安装并且切换不同版本的-java-环境：" class="headerlink" title="安装并且切换不同版本的 java 环境："></a>安装并且切换不同版本的 java 环境：</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># pacman 或者 yay 安装不同版本，可同时存在</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -S jdk21-openjdk</span><br><span class="line">yay -S jdk13-openjdk</span><br><span class="line"><span class="comment"># 使用 archlinux-java 工具来切换默认的Java版本</span></span><br><span class="line"><span class="built_in">sudo</span> archlinux-java <span class="built_in">set</span> java-21-openjdk</span><br><span class="line"><span class="comment"># 查看当前安装的所有Java版本</span></span><br><span class="line">archlinux-java status</span><br><span class="line">Available Java environments:</span><br><span class="line">  java-21-openjdk (default)</span><br><span class="line">  java-22-openjdk</span><br><span class="line"><span class="comment">#查看当前 java 版本</span></span><br><span class="line">java -version</span><br><span class="line"></span><br><span class="line">openjdk version <span class="string">&quot;21.0.4&quot;</span> 2024-07-16</span><br><span class="line">OpenJDK Runtime Environment (build 21.0.4+7)</span><br><span class="line">OpenJDK 64-Bit Server VM (build 21.0.4+7, mixed mode, sharing)</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>待分类</category>
-      </categories>
-  </entry>
-  <entry>
     <title>C++ Primer 笔记</title>
     <url>/2022/08/16/C++%20Primer%20%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="C-Primer-笔记"><a href="#C-Primer-笔记" class="headerlink" title="C++ Primer 笔记"></a>C++ Primer 笔记</h1><p>注意：本文并不是教你学 C++，这只是笔者阅读 《C++ primer》这本书的过程中记录的相关知识，适用于已经对 C++有所了解的读者进行复习和查询，读者至少对 C 和 C++有所了解。</p>
@@ -2460,6 +2195,274 @@ git push -u origin fixBug
 <p>QQ看点偶然看到的。例子终究是例子，你自己的生活什么样不是别人说出来的。有人陪或者三年后自己差不多也该到结婚的时候了吧，人生即将打下一个基调。婚可能还是要结的，孩子可能还是要要的，自己的想法应该还没到扭转这个路线的能力？决心？自己也说不清。“传统路线”还是自由选择，就交给将来的自己去抉择把。至少现在觉得养孩子，还贷还不是自己想要的生活。不喜欢背负着太多压力，不喜欢没有选择，不喜欢”不得不“，喜欢”所做的一切都是因为自己原意去做，想去做，想去过什么生活，想成为什么样的人“。未来的事情交给未来就好了，未来总会成为现在的。</p>
 <p>最后几句话和前面关系不大吧。“凡事看的太透，人间便无趣了”这话怎么感觉说的这么像自己的状态。很多事情都没什么大兴趣，“无所谓”“都行”。</p>
 <p>有些后悔初中高中写的东西没保存了，高三末写的那个本子啊，就，之前的心态好想是对过去的没什么可留恋的。</p>
+]]></content>
+      <categories>
+        <category>待分类</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>ArchLinux 使用记录</title>
+    <url>/2025/01/10/ArchLinux%20%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="ArchLinux-使用记录"><a href="#ArchLinux-使用记录" class="headerlink" title="ArchLinux 使用记录"></a>ArchLinux 使用记录</h1><h2 id="零"><a href="#零" class="headerlink" title="零"></a>零</h2><p>强烈推荐阅读：<a href="https://archlinuxstudio.github.io/ArchLinuxTutorial/#/?id=arch-linux-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B-archtutorial-arch-linux-studio">Arch Linux 安装使用教程</a> 和 <a href="https://archlinuxstudio.github.io/ArchLinuxTutorial/#/?id=arch-linux-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B-archtutorial-arch-linux-studio">archlinux 简明指南</a> 。 这两本书都是内容非常详尽的 Arch Linux 安装和使用教程，包括Arch Linux安装、基本配置、日产使用、常用软件安装等内容，可以帮助初学者解决很多问题。 </p>
+<p>笔者本人使用笔记本单固态应硬盘安装windows10 + ArchLinux双系统，推荐按照 <a href="https://archlinuxstudio.github.io/ArchLinuxTutorial/#/?id=arch-linux-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B-archtutorial-arch-linux-studio">archlinux 简明指南</a> 的安装步骤进行安装。</p>
+<p>安装过程需要注意：</p>
+<ol>
+<li><p>清楚你即将使用的命令做了什么，不要一味回车回车…</p>
+</li>
+<li><p>按照教程的大纲，分模块进行，分清每一块做了什么，不要一行一行，遇见一个敲一个，先通读知晓这一块是做什么之后，返回来按照自己需要的去做。</p>
+</li>
+<li><p>不要过分地“多线程”操作试图节省时间，稳中前进，不出错就是最快的。</p>
+</li>
+<li><p>仔细对照好输入的命令是否正确，确认每个命令的结果是否符合预期。</p>
+<p> <a href="https://bbs.archlinuxcn.org/index.php">Arclinux 中文论坛</a> 众多 Archlinux 使用者汇集的地方，同时有着较为官方的信息和软件包，很多问题可以在这里解决。</p>
+</li>
+</ol>
+<h2 id="部分命令记录"><a href="#部分命令记录" class="headerlink" title="部分命令记录"></a>部分命令记录</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> fdisk -l   <span class="comment"># 查看磁盘和分区信息</span></span><br><span class="line">df-h <span class="comment"># 显示文件系统磁盘空间使用情况</span></span><br><span class="line"><span class="built_in">sudo</span> umount /dev/sdX <span class="comment"># 卸载U盘，“/dev/sdX”为你要卸载的U盘设备名称。</span></span><br><span class="line"><span class="built_in">sudo</span> mkfs.vfat /dev/sdX <span class="comment"># 将U盘格式化为FAT32文件系统/</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printenv</span> <span class="comment"># 查看所有的环境变量</span></span><br><span class="line"><span class="built_in">echo</span> &amp;PATH <span class="comment"># 查看特定环境变量的值（echo $http_proxy）</span></span><br><span class="line"><span class="built_in">export</span> http_proxy=<span class="string">&quot;http://127.0.0.1:7890&quot;</span>   <span class="comment"># 设置代理服务器，设置http_proxy和https_proxy环境变量</span></span><br><span class="line"><span class="built_in">export</span> https_proxy=<span class="string">&quot;http://127.0.0.1:7890&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>以下命令需要安装后才能使用：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tree -A 使用ASNI绘图字符显示树状图而非以ASCII字符组合</span><br><span class="line">     -C 使用颜色区分文件类型</span><br><span class="line">     -N 支持显示中文字符</span><br><span class="line">     -a 显示隐藏文件(以.开头)</span><br><span class="line">     -d 只显示目录</span><br><span class="line">     -h 使用人易读的单位显示文件大小</span><br><span class="line">     -L [num] 指定显示的最大深度</span><br></pre></td></tr></table></figure>
+
+<p>##Pacman包管理：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -Syu                <span class="comment"># 升级系统</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -S package_name     <span class="comment"># 安装软件包</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -Syu package_name   <span class="comment"># 升级系统并安装软件包，ArchLinux 不支持部分升级，建议用此命令先升级再安装</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -Syyu               <span class="comment"># 升级系统 yy标记强制刷新 u标记升级动作</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -Ss package_name    <span class="comment"># 搜索包含相关内容的软件包</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -R package_name     <span class="comment"># 删除软件包</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -Qi package_name    <span class="comment"># 查看软件包信息     </span></span><br><span class="line"><span class="built_in">sudo</span> pacman -Q                  <span class="comment"># 查看安装的软件包      </span></span><br><span class="line"><span class="built_in">sudo</span> pacman -Rs package_name    <span class="comment"># 删除软件包，及其所有没有被其他已安装软件包使用的依赖包</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -Si package_name    <span class="comment"># 从数据库中搜索软件包的信息</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -Qdt                <span class="comment"># 找出孤立包 Q为查询本地软件包数据库 d标记依赖包 t标记不需要的包 dt合并标记孤立包</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -Rs $(pacman -Qtdq) <span class="comment"># 删除孤立软件包</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -U abc.pkg.tar.gz   <span class="comment"># 安装下载的abc包，或新编译的本地abc包</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -Fy                 <span class="comment"># 更新命令查询文件列表数据库</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -F xxx              <span class="comment"># 当不知道某个命令属于哪个包时，用来查询某个xxx命令属于哪个包</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -Sc                 <span class="comment"># 清理没有安装的所有缓存包，和没有被使用的同步数据库</span></span><br><span class="line"></span><br><span class="line">yay -Syu                        <span class="comment"># 升级官方和 AUR 的软件包, 包括pacman, -syyu强制升级</span></span><br><span class="line">yay -S abc                      <span class="comment"># 安装abc包</span></span><br><span class="line">yay -Ss abc | grep 已安装        <span class="comment"># 搜索已安装且包含abc的包</span></span><br><span class="line">yay -R 包名                      <span class="comment"># 删除软件包(不包括前后缀，版本号)</span></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">rm</span> /var/lib/pacman/db.lck  <span class="comment"># 删除/var/lib/pacman/db.lck锁</span></span><br></pre></td></tr></table></figure>
+<h2 id="系统服务的操作与介绍"><a href="#系统服务的操作与介绍" class="headerlink" title="系统服务的操作与介绍"></a>系统服务的操作与介绍</h2><p>Linux 系统中运行着各种服务，你需要掌握查询，变更服务状态的方式。同时对创建服务最好也有大致的了解。这里讲述命令<code>systemctl</code>的用法。以 dhcpcd 为例</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl start dhcpcd          <span class="comment"># 启动服务</span></span><br><span class="line">systemctl stop dhcpcd           <span class="comment"># 停止服务</span></span><br><span class="line">systemctl restart dhcpcd        <span class="comment"># 重启服务</span></span><br><span class="line">systemctl reload dhcpcd         <span class="comment"># 重新加载服务以及它的配置文件</span></span><br><span class="line">systemctl status dhcpcd         <span class="comment"># 查看服务状态</span></span><br><span class="line">systemctl <span class="built_in">enable</span> dhcpcd         <span class="comment"># 设置开机启动服务</span></span><br><span class="line">systemctl <span class="built_in">enable</span> --now dhcpcd   <span class="comment"># 设置服务为开机启动并立即启动这个单元:</span></span><br><span class="line">systemctl <span class="built_in">disable</span> dhcpcd        <span class="comment"># 取消开机自动启动</span></span><br><span class="line">systemctl daemon-reload dhcpcd  <span class="comment"># 重新载入 systemd 配置 扫描新增或变更的服务单元 不会重新加载变更的配置 加载变更的配置用 reload</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="换源-阿里云"><a href="#换源-阿里云" class="headerlink" title="换源-阿里云"></a>换源-阿里云</h2><p>编辑文件<code>/etc/pacman.d/mirrorlist</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vim /etc/pacman.d/mirrorlist</span><br></pre></td></tr></table></figure>
+<p>在镜像源列表最顶端添加：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Server = http://mirrors.aliyun.com/archlinux/<span class="variable">$repo</span>/os/<span class="variable">$arch</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>参考：<a href="https://developer.aliyun.com/mirror/archlinuxcn?spm=a2c6h.13651102.0.0.3e221b11Nc8UpY">阿里云开发者社区&gt; 镜像站&gt; archlinuxcn</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -Syy &amp;&amp; <span class="built_in">sudo</span> pacman -S archlinuxcn-keyring <span class="comment"># 安装 archlinuxcn-keyring 包导入GPG key</span></span><br></pre></td></tr></table></figure>
+<h2 id="安装yay"><a href="#安装yay" class="headerlink" title="安装yay"></a>安装yay</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S yay</span><br><span class="line"><span class="comment">#安装完成后再次更新</span></span><br><span class="line">yay -Syyu &amp;&amp; yay -Sys</span><br></pre></td></tr></table></figure>
+<h2 id="设置某个命令不再需要-sudo-输入密码"><a href="#设置某个命令不再需要-sudo-输入密码" class="headerlink" title="设置某个命令不再需要 sudo 输入密码"></a>设置某个命令不再需要 sudo 输入密码</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vim /etc/sudoers <span class="comment"># 编辑配置文件</span></span><br><span class="line"><span class="comment"># 在合适的行添加以下内容，username 是你的用户名，注意使用完整路径，不然每次都会提醒，不同命令用&quot;,&quot;隔开</span></span><br><span class="line">username ALL=(ALL) NOPASSWD: /usr/sbin/systemctl，/ust/sbin/pacman</span><br><span class="line"><span class="comment"># 使用which命令可以查看程序的完整路径。</span></span><br><span class="line"><span class="built_in">which</span> yay</span><br><span class="line"><span class="built_in">which</span> pacman</span><br><span class="line"><span class="comment"># 一键为当前用户设置免 sudo 权限，当前用户所有命令都不在需要sudo输入密码</span></span><br><span class="line"><span class="built_in">sudo</span> sh -c <span class="string">&quot;echo &#x27;<span class="variable">$USER</span> ALL = (ALL) NOPASSWD:ALL&#x27; &gt; /etc/sudoers.d/<span class="variable">$USER</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="常见问题及其解决"><a href="#常见问题及其解决" class="headerlink" title="常见问题及其解决"></a>常见问题及其解决</h2><ul>
+<li><p>使用yay命令时报错：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">搜索 AUR 时出错: response decoding failed: invalid character <span class="string">&#x27;&lt;&#x27;</span> looking <span class="keyword">for</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>解决：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yay --aururl <span class="string">&quot;https://aur.archlinux.org&quot;</span> --save</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>Telegram无法登陆：</p>
+<ul>
+<li>解决：<br>SETTING中添加地址，使用代理，port选择代理所使用端口号。</li>
+</ul>
+</li>
+<li><p>连接显示器无法使用：</p>
+<ul>
+<li>解决：<br>根据<a href="https://archlinuxstudio.github.io/ArchLinuxTutorial/#/">Linux 安装使用教程</a>中<strong>显卡驱动</strong>所描述进行即可。</li>
+</ul>
+</li>
+<li><p>VSCode无法唤出外部终端：</p>
+<ul>
+<li>解决：<br><code>.vscode</code>文件中设置启用外部终端，在<code>settings.json</code>文件中加入”terminal.external.linuxExec”: “&#x2F;usr&#x2F;bin&#x2F;konsole”, “”内指要调用的终端bin&#x2F;konsole。</li>
+</ul>
+</li>
+<li><p>在升级系统（syu）时，出现以下内容：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">错误：python-markdown: 来自 <span class="string">&quot;Caleb Maclennan &lt;alerque@archlinux.org&gt;&quot;</span> 的签名是勉强信任的</span><br><span class="line">:: 文件 /var/cache/pacman/pkg/python-markdown-3.3.6-1-any.pkg.tar.zst 已损坏 (无效或已损坏的软件包 (PGP 签名)).</span><br><span class="line">打算删除吗？ [Y/n] </span><br><span class="line">错误：trash-cli: 来自 <span class="string">&quot;Alexander Epaneshnikov &lt;alex19ep@archlinux.org&gt;&quot;</span> 的签名是勉强信任的</span><br><span class="line">:: 文件 /var/cache/pacman/pkg/trash-cli-0.21.10.24-1-any.pkg.tar.zst 已损坏 (无效或已损坏的软件包 (PGP 签名)).</span><br><span class="line">打算删除吗？ [Y/n] </span><br><span class="line">错误：无法提交处理 (无效或已损坏的软件包)</span><br><span class="line">发生错误，没有软件包被更新。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>解决：</p>
+<p>终端输入：<code>sudo pacman-key --init &amp;&amp; sudo pacman-key --populate &amp;&amp; sudo pacman -Syyu</code></p>
+<p>可能的方法：<code>sudo pacman -S archlinux-keyring</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="使用Docker"><a href="#使用Docker" class="headerlink" title="使用Docker"></a>使用Docker</h2><ol>
+<li><p>安装：</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S docker <span class="comment"># 安装Docker -Ss搜索Docker软件包</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> docker.service <span class="comment"># 开启Docker开机自启动服务</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl start docker.service  <span class="comment"># 启动Docker服务</span></span><br><span class="line"><span class="comment"># 安装好docker后自动建立了docker组，不需要自己添加docker组，只需要把当前工作用户加入docker组即可</span></span><br><span class="line"><span class="built_in">sudo</span> gpasswd -a <span class="variable">$USER</span> docker <span class="comment"># 把工作用户加入Docker组，避免使用root账号工作</span></span><br><span class="line"><span class="comment">#重启系统生效</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">disable</span> docker.service <span class="comment"># 关闭开机自启动服务</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取镜像：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull archlinux  <span class="comment"># 下载镜像</span></span><br><span class="line">docker image <span class="built_in">ls</span>        <span class="comment"># 列出镜像列表</span></span><br><span class="line">docker ps -a           <span class="comment"># 列出容器列表</span></span><br><span class="line">docker run -it archlinux /bin/bash       <span class="comment"># 用所给镜像启动一个新的容器</span></span><br><span class="line">docker run --<span class="built_in">rm</span> -it --net=host gpt-academic <span class="comment"># 用所给镜像启动一个新的容器</span></span><br><span class="line">docker <span class="built_in">exec</span> -it &lt;CONTAINER_NAME&gt; bash    <span class="comment"># 进入一个正在运行的docker(在容器内部创建一个子进程)</span></span><br><span class="line">docker stop [contaionerID]               <span class="comment"># 终止镜像</span></span><br><span class="line">docker rmi $(docker images -q)           <span class="comment"># 删除所有镜像</span></span><br><span class="line">docker stop $(docker ps -aq)             <span class="comment"># 停止所有容器</span></span><br><span class="line">docker container <span class="built_in">rm</span> [contaionerID]       <span class="comment"># 删除一个处于终止状态的容器</span></span><br><span class="line">docker container <span class="built_in">rm</span> $(docker images -q)  <span class="comment"># 删除所有容器</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置镜像：</p>
+<p>启动镜像，配置初始开发环境，安装了一些包（可能有些没有用），</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -t -i archlinux /bin/bash <span class="comment"># 启动镜像</span></span><br><span class="line"><span class="comment"># 在docker内输入以下内容</span></span><br><span class="line">sed -i <span class="string">&#x27;1i Server = http://mirrors.aliyun.com/archlinux/$repo/os/$arch&#x27;</span> /etc/pacman.d/mirrorlist \</span><br><span class="line">    &amp;&amp; sed -i <span class="string">&#x27;1i Server = https://mirrors.tencent.com/archlinux/$repo/os/$arch&#x27;</span> /etc/pacman.d/mirrorlist \</span><br><span class="line">    &amp;&amp; sed -i <span class="string">&#x27;$i [archlinuxcn]&#x27;</span> /etc/pacman.conf \</span><br><span class="line">    &amp;&amp; sed -i <span class="string">&#x27;$i SigLevel = TrustAll&#x27;</span> /etc/pacman.conf \</span><br><span class="line">    &amp;&amp; sed -i <span class="string">&#x27;$i Server = https://repo.archlinuxcn.org/$arch&#x27;</span> /etc/pacman.conf \</span><br><span class="line">    &amp;&amp; sed -i -r <span class="string">&#x27;s/^NoExtract\s*=\s*.*/# \0/g&#x27;</span> /etc/pacman.conf \</span><br><span class="line">    &amp;&amp; pacman -Syyu --noconfirm \</span><br><span class="line">    &amp;&amp; pacman -Sy --noconfirm archlinuxcn-keyring &amp;&amp; pacman -Su --noconfirm\</span><br><span class="line">    &amp;&amp; pacman -Syy --noconfirm git vim neovim zsh oh-my-zsh-git jdk-openjdk jdk8-openjdk jdk11-openjdk \</span><br><span class="line">    maven yay zsh python3 go nodejs npm yarn tmux python2 zsh-autosuggestions zsh-syntax-highlighting \</span><br><span class="line">    zsh-theme-powerlevel10k ranger python-pip python-neovim wl-clipboard fzf ripgrep man-db \</span><br><span class="line">    gcc clang base-devel wqy-zenhei noto-fonts-cjk wget unzip thefuck \</span><br><span class="line">    &amp;&amp; <span class="built_in">ln</span> -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \</span><br><span class="line">    &amp;&amp; pacman -Scc --noconfirm \</span><br><span class="line">    &amp;&amp; <span class="built_in">rm</span> -rf /var/lib/pacman/sync/* /var/cache/pacman/pkg/* \</span><br><span class="line">    &amp;&amp; <span class="built_in">echo</span> <span class="string">&quot;&quot;</span> &gt; /var/log/pacman.log</span><br></pre></td></tr></table></figure>
+
+<p>精简版本：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i <span class="string">&#x27;1i Server = http://mirrors.aliyun.com/archlinux/$repo/os/$arch&#x27;</span> /etc/pacman.d/mirrorlist \</span><br><span class="line">    &amp;&amp; sed -i <span class="string">&#x27;1i Server = https://mirrors.tencent.com/archlinux/$repo/os/$arch&#x27;</span> /etc/pacman.d/mirrorlist \</span><br><span class="line">    &amp;&amp; sed -i <span class="string">&#x27;$i [archlinuxcn]&#x27;</span> /etc/pacman.conf \</span><br><span class="line">    &amp;&amp; sed -i <span class="string">&#x27;$i SigLevel = TrustAll&#x27;</span> /etc/pacman.conf \</span><br><span class="line">    &amp;&amp; sed -i <span class="string">&#x27;$i Server = https://repo.archlinuxcn.org/$arch&#x27;</span> /etc/pacman.conf \</span><br><span class="line">    &amp;&amp; sed -i -r <span class="string">&#x27;s/^NoExtract\s*=\s*.*/# \0/g&#x27;</span> /etc/pacman.conf \</span><br><span class="line">    &amp;&amp; pacman -Syyu --noconfirm \</span><br><span class="line">    &amp;&amp; pacman -Sy --noconfirm archlinuxcn-keyring &amp;&amp; pacman -Su --noconfirm\</span><br><span class="line">    &amp;&amp; pacman -Syy --noconfirm git vim neovim \</span><br><span class="line">    maven yay go npm yarn tmux \</span><br><span class="line">    ranger python-pip python-neovim wl-clipboard fzf ripgrep man-db \</span><br><span class="line">    gcc clang base-devel wqy-zenhei noto-fonts-cjk wget unzip thefuck \</span><br><span class="line">    &amp;&amp; <span class="built_in">ln</span> -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \</span><br><span class="line">    &amp;&amp; pacman -Scc --noconfirm \</span><br><span class="line">    &amp;&amp; <span class="built_in">rm</span> -rf /var/lib/pacman/sync/* /var/cache/pacman/pkg/* \</span><br><span class="line">    &amp;&amp; <span class="built_in">echo</span> <span class="string">&quot;&quot;</span> &gt; /var/log/pacman.log</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>配置vscode：</p>
+<p>下载插件：Remote Development Pack（包含Remote-Containers)，Docker。打开插件，在CONTAINERS中右键Attach Visual Studio Code，在vscode中运行了镜像，重新安装一些扩展，当作一个新的archlinux一样使用。</p>
+</li>
+<li><p>容器和本地间的文件传输：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker ps -a   <span class="comment"># 获得容器ID</span></span><br><span class="line">docker <span class="built_in">cp</span> 本地文件路径 ID全称:容器路径 <span class="comment"># 本地文件复制到容器</span></span><br><span class="line">docker <span class="built_in">cp</span> ID全称:容器文件路径 本地路径 <span class="comment"># 容器文件复制到本地</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="Typora-PicGo-Github图床"><a href="#Typora-PicGo-Github图床" class="headerlink" title="Typora+PicGo+Github图床"></a>Typora+PicGo+Github图床</h2><p>整体遵循：<a href="https://juejin.cn/post/6844904137407086600#heading-8">https://juejin.cn/post/6844904137407086600#heading-8</a></p>
+<ol>
+<li>创建GIthub仓库并创建Token并复制</li>
+<li>下载PicGo（app）并配置，包括时间戳命名，选择github图床，仓库名，分支用main，设定Token</li>
+<li>下载并配置node.js</li>
+<li>配置Typora并测试图床</li>
+</ol>
+<h3 id="编译安装从-GitHub-下载的源码"><a href="#编译安装从-GitHub-下载的源码" class="headerlink" title="编译安装从 GitHub 下载的源码"></a>编译安装从 GitHub 下载的源码</h3><ol>
+<li><p>执行以下命令，生成 Makefile 文件：</p>
+<p> <code>./autogen.sh</code> </p>
+</li>
+<li><p>如果下载的源代码中已经包含了 Makefile 文件，则可以跳过此步骤。</p>
+</li>
+<li><p>执行以下命令，配置编译选项：</p>
+<p><code>./configure</code> </p>
+<p>configure 脚本会检查系统环境和依赖库，并生成 Makefile 文件。可以通过指定不同的选项来定制编译过程。</p>
+<p>例如，可以使用 –prefix 选项指定安装目录，使用 –enable-shared 选项生成共享库等。</p>
+</li>
+<li><p>执行以下命令，开始编译： </p>
+<p> <code>make</code> </p>
+<p> 这个命令会编译源代码，并生成可执行文件或共享库等。 </p>
+</li>
+<li><p>执行以下命令，安装编译好的文件：</p>
+</li>
+<li><p><code>sudo make install</code> </p>
+<p>这个命令会将编译好的文件安装到系统中，通常是 &#x2F;usr&#x2F;local 目录。 如果在执行 configure 或 make 命令时遇到了错误，可以根据错误信息进行调整。通常情况下，错误信息会提示缺少依赖库或者系统环境不兼容等问题。</p>
+</li>
+</ol>
+<h2 id="安装deb包"><a href="#安装deb包" class="headerlink" title="安装deb包"></a>安装deb包</h2><ol>
+<li>使用yay安装debtap。 <code>yay -S debtap</code></li>
+<li>升级的debtap。<code>sudo debtap -U</code></li>
+<li>转换deb包，生成一个<code>yourfile.zst</code>文件。<code>sudo debtap yourfile.deb</code>（接两次回车）</li>
+<li>安装转换后的包。<code>sudo pacman -U yourfile.zst</code></li>
+</ol>
+<h2 id="压缩文件"><a href="#压缩文件" class="headerlink" title="压缩文件"></a>压缩文件</h2><ul>
+<li><code>-c</code> ：生成一个新的归档文件</li>
+<li><code>-f</code> ：输出到文件中，</li>
+<li><code>-z</code> &amp; <code>-j</code> ：将 tar 压缩成 gzip 和 bzip2 格式。</li>
+<li><code>archive</code> ：压缩文件的名称</li>
+<li><code>/path/to/folder</code> ：要压缩的文件夹的路径。<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将文件夹压缩成 .tar 文件:</span></span><br><span class="line">copy codetar -cf archive.tar /path/to/folder</span><br><span class="line"><span class="comment"># 将文件夹压缩成 .tar.gz 文件:</span></span><br><span class="line">copy codetar -czf archive.tar.gz /path/to/folder</span><br><span class="line"><span class="comment"># 将文件夹压缩成 .tar.bz2 文件:</span></span><br><span class="line">copy codetar -cjf archive.tar.bz2 /path/to/folder</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="安装QQ"><a href="#安装QQ" class="headerlink" title="安装QQ"></a>安装QQ</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yay -Ss linuxqq <span class="comment"># 在AUR查找linuxQQ </span></span><br><span class="line">yay -S linuxqq  <span class="comment"># 从AUR安装linuxqq</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -Rns linuxqq <span class="comment"># 删除linuxqq及不再需要的依赖</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="登陆后闪退的可能解决办法："><a href="#登陆后闪退的可能解决办法：" class="headerlink" title="登陆后闪退的可能解决办法："></a>登陆后闪退的可能解决办法：</h3><p>删除<code>~/.config/QQ</code> 下的所有文件，重启QQ进行登陆并在设置里关闭QQ自己的更新。</p>
+<p>其他问题请自行在Google或者在<a href="https://bbs.archlinuxcn.org/index.php">Arch中文社区</a>寻找解决方案</p>
+<h2 id="安装-fcitx5及中文输入法"><a href="#安装-fcitx5及中文输入法" class="headerlink" title="安装 fcitx5及中文输入法"></a>安装 fcitx5及中文输入法</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S fcitx5-im </span><br><span class="line"><span class="built_in">sudo</span> pacman -S fcitx5-chinese-addons  fcitx5-rime</span><br></pre></td></tr></table></figure>
+
+<p><code>sudo vim /etc/environment</code>，添加如下内容，之后重启输入法：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GTK_IM_MODULE=fcitx</span><br><span class="line">QT_IM_MODULE=fcitx</span><br><span class="line">XMODIFIERS=@im=fcitx</span><br><span class="line">SDL_IM_MODULE=fcitx</span><br></pre></td></tr></table></figure>
+
+<p>在设置中找到输入法，添加输入法，选拼音</p>
+<h3 id="中文标点消失："><a href="#中文标点消失：" class="headerlink" title="中文标点消失："></a>中文标点消失：</h3><ul>
+<li><p>编辑~&#x2F;.config&#x2F;fcitx&#x2F;data&#x2F;punc.mb.zh_CN，自行查找</p>
+</li>
+<li><p>[ctrl+.]</p>
+</li>
+</ul>
+<h2 id="安装zsh"><a href="#安装zsh" class="headerlink" title="安装zsh"></a>安装zsh</h2><h3 id="编辑配置文件"><a href="#编辑配置文件" class="headerlink" title="编辑配置文件:"></a>编辑配置文件:</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>目前的:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">if</span> [[ -r <span class="string">&quot;<span class="variable">$&#123;XDG_CACHE_HOME:-<span class="variable">$HOME</span>/.cache&#125;</span>/p12k-instant-prompt-<span class="variable">$&#123;(%):-%n&#125;</span>.zsh&quot;</span> ]]; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">source</span> <span class="string">&quot;<span class="variable">$&#123;XDG_CACHE_HOME:-<span class="variable">$HOME</span>/.cache&#125;</span>/p11k-instant-prompt-<span class="variable">$&#123;(%):-%n&#125;</span>.zsh&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ZSH=/usr/share/oh-my-zsh/</span><br><span class="line"></span><br><span class="line">ZSH_THEME=<span class="string">&quot;powerlevel10k/powerlevel10k&quot;</span></span><br><span class="line"></span><br><span class="line">plugins=(</span><br><span class="line">	<span class="built_in">sudo</span></span><br><span class="line">	git</span><br><span class="line">	autojump</span><br><span class="line">	zsh-syntax-highlighting</span><br><span class="line">	zsh-autosuggestions</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">ZSH_CACHE_DIR=<span class="variable">$HOME</span>/.cache/oh-my-zsh</span><br><span class="line"><span class="keyword">if</span> [[ ! -d <span class="variable">$ZSH_CACHE_DIR</span> ]]; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">mkdir</span> <span class="variable">$ZSH_CACHE_DIR</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> <span class="variable">$ZSH</span>/oh-my-zsh.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.</span></span><br><span class="line">[[ ! -f ~/.p10k.zsh ]] || <span class="built_in">source</span> ~/.p10k.zsh</span><br><span class="line"><span class="comment"># other name</span></span><br><span class="line"><span class="built_in">alias</span> sp=<span class="string">&#x27;sudo pacman&#x27;</span> </span><br><span class="line"><span class="built_in">alias</span> syyu=<span class="string">&#x27;yay -Syyu&#x27;</span> <span class="comment"># 强制升级系统和软件包</span></span><br><span class="line"><span class="built_in">alias</span> syu=<span class="string">&#x27;yay -Syu&#x27;</span>   <span class="comment"># 升级系统和软件包</span></span><br><span class="line"><span class="built_in">alias</span> c=<span class="string">&#x27;clear&#x27;</span> <span class="comment"># 清屏</span></span><br><span class="line"><span class="built_in">alias</span> e=<span class="string">&#x27;exit&#x27;</span>  <span class="comment"># 退出终端</span></span><br><span class="line"><span class="built_in">alias</span> qq=<span class="string">&#x27;rm -rf ~/.config/QQ/ &amp;&amp; linuxqq &amp;&#x27;</span> <span class="comment"># 启动QQ时删除文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># git快捷键 cd+add+commit+push+cd</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将本地Note仓库提交到gihub</span></span><br><span class="line"><span class="built_in">alias</span> gpn=<span class="string">&#x27;cd /home/origin/Code/repository/Note &amp;&amp; git add . &amp;&amp; git commit -m \&quot;update\&quot; &amp;&amp; git push &amp;&amp; cd -&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将本地Code_c仓库提交到gihub</span></span><br><span class="line"><span class="built_in">alias</span> gpc=<span class="string">&#x27;cd /home/origin/Code/repository/Code_c &amp;&amp; git add . &amp;&amp; git commit -m \&quot;update\&quot; &amp;&amp; git push &amp;&amp; cd -&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将本地Code_cc仓库提交到gihub</span></span><br><span class="line"><span class="built_in">alias</span> gpcc=<span class="string">&#x27;cd /home/origin/Code/repository/Code_cc &amp;&amp; git add . &amp;&amp; git commit -m \&quot;update\&quot; &amp;&amp; git push &amp;&amp; cd -&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将本地Python仓库提交到gihub</span></span><br><span class="line"><span class="built_in">alias</span> gppy=<span class="string">&#x27;cd /home/origin/Code/repository/Code_py &amp;&amp; git add . &amp;&amp; git commit -m \&quot;update\&quot; &amp;&amp; git push &amp;&amp; cd -&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将本地my-xv6-labs-2022仓库提交到gihub</span></span><br><span class="line"><span class="built_in">alias</span> gplab=<span class="string">&#x27;cd /home/origin/Code/repository/my-xv6-labs-2022 &amp;&amp; git add . &amp;&amp; git commit -m \&quot;update\&quot; &amp;&amp; git push &amp;&amp;cd -&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> GOPATH=<span class="string">&quot;<span class="variable">$HOME</span>/go&quot;</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="string">&quot;<span class="variable">$PATH</span>:/usr/lib/go/bin:<span class="variable">$GOPATH</span>/bin&quot;</span></span><br><span class="line"><span class="built_in">export</span> PATH=/usr/sbin:<span class="variable">$PATH</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>##为一个文件或目录创建一个符号链接：</p>
+<p>在<code>/usr/local/local</code>中存有已经建立的符号链接，在<code>/usr/share</code>中有通过自行下载的装包安装的软件，如通过官网安装包安装的code。</p>
+<p>输入<code>ln -s [文件/目录路径] [建立后的软链接名称]</code>，即可建立链接。如：<code>ln -s /usr/share/code/code code</code></p>
+<h2 id="更改默认Jva环境"><a href="#更改默认Jva环境" class="headerlink" title="更改默认Jva环境"></a>更改默认Jva环境</h2><h3 id="安装Java环境（Java-20-jdk）"><a href="#安装Java环境（Java-20-jdk）" class="headerlink" title="安装Java环境（Java-20-jdk）"></a>安装Java环境（Java-20-jdk）</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -Sy --needed --noconfirm jdk</span><br></pre></td></tr></table></figure>
+
+<p>输入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">archlinux-java status</span><br></pre></td></tr></table></figure>
+
+<p>若出现类似下面，即为安装成功</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Available Java environments:</span><br><span class="line">  java-21-jdk</span><br><span class="line">  java-21-openjdk</span><br><span class="line">  java-8-openjdk (default)</span><br></pre></td></tr></table></figure>
+
+<p>若 java-21-openjdk 为 default 则已成功将 java21 设置为默认环境，若不是，则输入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> archlinux-java <span class="built_in">set</span> java-20-openjdk[你想要设为默认的java环境名]</span><br></pre></td></tr></table></figure>
+
+<p>后输入<code>archlinux-java status</code>查看， java-21-openjdk 已是 default</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Available Java environments:</span><br><span class="line">  java-21-jdk</span><br><span class="line">  java-21-openjdk (default)</span><br><span class="line">  java-8-openjdk</span><br></pre></td></tr></table></figure>
+
+<h2 id="ArchLinux内存管理"><a href="#ArchLinux内存管理" class="headerlink" title="ArchLinux内存管理"></a>ArchLinux内存管理</h2><ol>
+<li><p>清除 Arch Linux 上的包缓存和AUR 软件包</p>
+<p> 在<code>/var/cache/pacman/pkg/</code>目录中存有下载的每个软件包；</p>
+<p> 在<code>/home/Yuanmxc/.cache/yay</code>存有从 AUR 下载的软件包。</p>
+<p> 这些软件包包括升级前的旧包，如果更新破坏了软件包，便于回滚到以前的版本。</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 删除当前上面两个文件中未安装的所有软件包</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -Sc</span><br><span class="line">yay -Sc</span><br><span class="line"><span class="comment"># -cc 标志删除所有缓存的包</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -Scc</span><br><span class="line">yay -Scc</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除孤立的软件包</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -Qtdq 查看删除孤立的软件包</span><br><span class="line"><span class="built_in">sudo</span> pacman -Rns $(pacman -Qtdq)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>清理日志，设置了固定大小为50M，多的日志会被删掉。</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> journalctl --vacuum-size=50M</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="python-使用-pip-遇到问题"><a href="#python-使用-pip-遇到问题" class="headerlink" title="python 使用 pip 遇到问题"></a>python 使用 pip 遇到问题</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">pip install scikit-learn</span><br><span class="line">error: externally-managed-environment</span><br><span class="line"></span><br><span class="line">× This environment is externally managed</span><br><span class="line">╰─&gt; To install Python packages system-wide, try <span class="string">&#x27;pacman -S</span></span><br><span class="line"><span class="string">    python-xyz&#x27;</span>, <span class="built_in">where</span> xyz is the package you are trying to</span><br><span class="line">    install.</span><br><span class="line">    </span><br><span class="line">    If you wish to install a non-Arch-packaged Python package,</span><br><span class="line">    create a virtual environment using <span class="string">&#x27;python -m venv path/to/venv&#x27;</span>.</span><br><span class="line">    Then use path/to/venv/bin/python and path/to/venv/bin/pip.</span><br><span class="line">    </span><br><span class="line">    If you wish to install a non-Arch packaged Python application,</span><br><span class="line">    it may be easiest to use <span class="string">&#x27;pipx install xyz&#x27;</span>, <span class="built_in">which</span> will manage a</span><br><span class="line">    virtual environment <span class="keyword">for</span> you. Make sure you have python-pipx</span><br><span class="line">    installed via pacman.</span><br><span class="line"></span><br><span class="line">note: If you believe this is a mistake, please contact your Python installation or OS distribution provider. You can override this, at the risk of breaking your Python installation or OS, by passing --break-system-packages.</span><br><span class="line">hint: See PEP 668 <span class="keyword">for</span> the detailed specification.</span><br></pre></td></tr></table></figure>
+
+<p>解决：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">rm</span> /usr/lib/python3.12/EXTERNALLY-MANAGED <span class="comment"># python路径和版本要与系统中的相对应</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="修改用户名及用户目录"><a href="#修改用户名及用户目录" class="headerlink" title="修改用户名及用户目录"></a>修改用户名及用户目录</h2><ol>
+<li>切换终端，用root账户登录; </li>
+<li>编辑&#x2F;etc&#x2F;passwd文件，将旧用户名替换为新用户名; </li>
+<li>编辑&#x2F;etc&#x2F;shadow文件，将旧用户名替换为新用户名；</li>
+<li>编辑&#x2F;etc&#x2F;group文件，将旧用户名替换为新用户名；</li>
+<li>重命名home文件： mv &#x2F;home&#x2F;oldusername &#x2F;home&#x2F;newusername</li>
+</ol>
+<p> 注：目录名的改变会导致一些固定路径的配置项发生错误，需要手动修改路径。</p>
+<h2 id="Linux-修改U盘名称"><a href="#Linux-修改U盘名称" class="headerlink" title="Linux 修改U盘名称"></a>Linux 修改U盘名称</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S mtools <span class="comment"># 安装工具</span></span><br><span class="line"><span class="built_in">sudo</span> vim /etc/mtools.conf <span class="comment"># 然后修改配置文件</span></span><br><span class="line"><span class="comment"># 在这个文件最后添加下面一行</span></span><br><span class="line">mtools_skip_check=1</span><br><span class="line"><span class="built_in">sudo</span> mlabel -i /dev/sdb1 ::DISK2 <span class="comment"># sdb1是U盘，SISK2是修改后的名称（自动改大写）</span></span><br><span class="line"><span class="built_in">sudo</span> eject /dev/sdb1      <span class="comment"># 修改完成</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="安装使用-valgrind-检测内存泄露"><a href="#安装使用-valgrind-检测内存泄露" class="headerlink" title="安装使用 valgrind 检测内存泄露"></a>安装使用 valgrind 检测内存泄露</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S valgrind</span><br><span class="line">pacman -S debuginfod</span><br><span class="line">pacman -S glibc</span><br><span class="line"></span><br><span class="line">valgrind --leak-check=full ./your_program</span><br></pre></td></tr></table></figure>
+
+<h2 id="syu升级软件包出现错误："><a href="#syu升级软件包出现错误：" class="headerlink" title="syu升级软件包出现错误："></a>syu升级软件包出现错误：</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">google-chrome: 文件系统中已存在 /opt/google/chrome/CHROME_VERSION_EXTRA </span><br><span class="line">google-chrome: 文件系统中已存在 /opt/google/chrome/MEIPreload/manifest.json </span><br><span class="line">google-chrome: 文件系统中已存在 /opt/google/chrome/MEIPreload/preloaded_data.pb </span><br><span class="line"></span><br><span class="line">（多行类似,在<span class="string">&quot;/opt/google/chrome/&quot;</span>下）</span><br><span class="line"></span><br><span class="line">google-chrome: 文件系统中已存在 /usr/share/doc/google-chrome-stable/changelog.gz </span><br><span class="line">google-chrome: 文件系统中已存在 /usr/share/gnome-control-center/default-apps/google-chrome.xml </span><br><span class="line">google-chrome: 文件系统中已存在 /usr/share/icons/hicolor/128x128/apps/google-chrome.png </span><br><span class="line">google-chrome: 文件系统中已存在 </span><br><span class="line"></span><br><span class="line">（多行类似,在<span class="string">&quot;/usr/share&quot;</span>下）</span><br><span class="line"></span><br><span class="line">发生错误，没有软件包被更新。</span><br><span class="line"> -&gt; 安装时出错:  [/home/Yuanmxc/.cache/yay/google-chrome/google-chrome-124.0.6367.201-1-x86_64.pkg.tar.zst] - <span class="built_in">exit</span> status 1</span><br></pre></td></tr></table></figure>
+
+<p>解决：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yay -S google-chrome --overwrite=<span class="string">&#x27;/opt/*&#x27;</span> --overwrite=<span class="string">&#x27;/usr/*&#x27;</span></span><br><span class="line"><span class="comment"># 安装时覆盖这两个目录下与 Google Chrome 相关的文件</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="手动编译安装一些软件包，依赖库"><a href="#手动编译安装一些软件包，依赖库" class="headerlink" title="手动编译安装一些软件包，依赖库"></a>手动编译安装一些软件包，依赖库</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S base-devel <span class="comment"># 安装必要编译工具和依赖项，已安装不用再安装</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/sctplab/usrsctp.git <span class="comment"># 克隆源码</span></span><br><span class="line"><span class="comment"># 进入目目录编译安装</span></span><br><span class="line"><span class="built_in">cd</span> usrsctp</span><br><span class="line">./bootstrap</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line"><span class="built_in">sudo</span> make install</span><br><span class="line"><span class="comment"># 安装完后可以删除源码</span></span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line"><span class="built_in">rm</span> -rf usrsctp</span><br></pre></td></tr></table></figure>
+
+<h2 id="KDE-显示相关"><a href="#KDE-显示相关" class="headerlink" title="KDE 显示相关"></a>KDE 显示相关</h2><p>安装 optimus-manager（<a href="https://github.com/Askannz/optimus-manager">AUR</a> &amp; <a href="https://github.com/Askannz/optimus-manager">GIthub</a>） 及 optimus-manager-qt 来进行 GPU 管理，适合 AMD+Nvida 独显用户，主要是便于连接显示器和显卡切换，方案参考来自 <a href="https://archlinuxstudio.github.io/ArchLinuxTutorial/#/rookie/graphic_driver?id=%e6%98%be%e5%8d%a1%e9%a9%b1%e5%8a%a8">archlinuxstudio的显卡驱动部分</a>。</p>
+<p>部分可能用到的命令。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /sys/bus/pci/devices/0000\:01\:00.0/power/runtime_status <span class="comment"># 查看 Nvida 是否active</span></span><br><span class="line">nvidia-smi <span class="comment"># 查看Nvida 显卡状态</span></span><br></pre></td></tr></table></figure>
+
+<p>从530.41驱动版本开始，出现了卡被锁定在低功耗限制的情况（参见GitHub问题483）。 NVIDIA 驱动程序已禁用使用 <code>nvidia-smi</code> 命令手动设置功率限制的功能，因此许多笔记本电脑陷入低功耗和性能不佳的困境。</p>
+<p>要解决此问题（对于 Ampere 一代或更新版本），请启动&#x2F;启用 <code>nvidia-powerd.service</code> ，这将启用 DynamicBoost。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl status nvidia-powerd.service <span class="comment"># 查看状态</span></span><br><span class="line">systemctl start nvidia-powerd.service <span class="comment"># 启用</span></span><br><span class="line">systemctl stop nvidia-powerd.service <span class="comment"># 停用</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="查看磁盘信息"><a href="#查看磁盘信息" class="headerlink" title="查看磁盘信息"></a>查看磁盘信息</h4><p>也可使用 <code>fdisk -l</code> 等命令进行查看，这里采用 <code>lsblk</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">lsblk</span><br></pre></td></tr></table></figure>
+
+<p>假设U盘为 sdc</p>
+<h3 id="卸载设备"><a href="#卸载设备" class="headerlink" title="卸载设备"></a>卸载设备</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 卸载 sdc </span></span><br><span class="line"><span class="built_in">sudo</span> umount /dev/sdc*</span><br></pre></td></tr></table></figure>
+
+<h3 id="格式化成功后，再次查看磁盘信息时，上面提到的3个分区就不存在了"><a href="#格式化成功后，再次查看磁盘信息时，上面提到的3个分区就不存在了" class="headerlink" title="格式化成功后，再次查看磁盘信息时，上面提到的3个分区就不存在了"></a>格式化成功后，再次查看磁盘信息时，上面提到的3个分区就不存在了</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 格式化成功后，再次查看磁盘信息时，上面提到的3个分区就不存在了</span></span><br><span class="line"><span class="built_in">sudo</span> mkfs.vfat /dev/sdc -I</span><br></pre></td></tr></table></figure>
+
+<h4 id="制作系统启动盘"><a href="#制作系统启动盘" class="headerlink" title="制作系统启动盘"></a>制作系统启动盘</h4><p>采用 <code>dd</code> 命令将系统镜像写入U盘。执行完毕后，<code>Ubuntu</code> 系统启动盘就制作好了。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># if=镜像的路径, of=写入的磁盘, status=progress方便查看下进度</span></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">dd</span> bs=4M <span class="keyword">if</span>=ubuntu-20.04.2.0-desktop-amd64.iso of=/dev/sdc status=progress oflag=<span class="built_in">sync</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="使用ssh连接远程主机"><a href="#使用ssh连接远程主机" class="headerlink" title="使用ssh连接远程主机"></a>使用ssh连接远程主机</h2><p>在 Arch Linux 上，SSH 客户端是 OpenSSH 软件包的一部分：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -Syu</span><br><span class="line"><span class="built_in">sudo</span> pacman -S openssh</span><br></pre></td></tr></table></figure>
+
+<p>生成一对新的ssh密钥：</p>
+<p>在终端中，使用以下命令生成一对新的 SSH 密钥：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>这将在 <code>~/.ssh/</code> 目录下生成一个 RSA 4096 位的密钥对。私钥为<code>id_rsa</code>，公钥为<code>id_rsa.pub</code></p>
+<p>编辑 <code>~/.ssh/config</code> 文件以便快速方便地连接多个主机：</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">Host myserver</span><br><span class="line">    HostName example.com</span><br><span class="line">    User username</span><br><span class="line">    Port 22</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
+
+<p>这样你可以通过 <code>ssh myserver</code> 来连接，而不需要每次都输入完整的命令。</p>
+<h2 id="安装并且切换不同版本的-java-环境："><a href="#安装并且切换不同版本的-java-环境：" class="headerlink" title="安装并且切换不同版本的 java 环境："></a>安装并且切换不同版本的 java 环境：</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># pacman 或者 yay 安装不同版本，可同时存在</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -S jdk21-openjdk</span><br><span class="line">yay -S jdk13-openjdk</span><br><span class="line"><span class="comment"># 使用 archlinux-java 工具来切换默认的Java版本</span></span><br><span class="line"><span class="built_in">sudo</span> archlinux-java <span class="built_in">set</span> java-21-openjdk</span><br><span class="line"><span class="comment"># 查看当前安装的所有Java版本</span></span><br><span class="line">archlinux-java status</span><br><span class="line">Available Java environments:</span><br><span class="line">  java-21-openjdk (default)</span><br><span class="line">  java-22-openjdk</span><br><span class="line"><span class="comment">#查看当前 java 版本</span></span><br><span class="line">java -version</span><br><span class="line"></span><br><span class="line">openjdk version <span class="string">&quot;21.0.4&quot;</span> 2024-07-16</span><br><span class="line">OpenJDK Runtime Environment (build 21.0.4+7)</span><br><span class="line">OpenJDK 64-Bit Server VM (build 21.0.4+7, mixed mode, sharing)</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装-更新软件包出错"><a href="#安装-更新软件包出错" class="headerlink" title="安装&#x2F;更新软件包出错"></a>安装&#x2F;更新软件包出错</h2><p>问题：</p>
+<p>更新 google-chrome 时报错无法安装 <code> python-ninja</code> ，需要手动处理，</p>
+<p>解决：</p>
+<p>方法一：清除缓存并重新下载</p>
+<p>尝试清除 <code>python-ninja</code> 的缓存并重新下载源文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yay -Scc python-ninja</span><br><span class="line">yay -S python-ninja</span><br></pre></td></tr></table></figure>
+
+<p>方法二：手动删除源文件并重新安装</p>
+<p>如果清除缓存后问题仍然存在，你可以手动下载并验证源文件：</p>
+<ol>
+<li><p>进入缓存目录：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.cache/yay/python-ninja</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除现有的 <code>python-ninja-1.11.1.3.tar.gz</code> 文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rm</span> python-ninja-1.11.1.3.tar.gz</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新运行 <code>yay</code> 进行构建：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yay -S python-ninja</span><br></pre></td></tr></table></figure></li>
+</ol>
 ]]></content>
       <categories>
         <category>待分类</category>
